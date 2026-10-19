@@ -125,7 +125,7 @@ Pre-opened: tab 1 is `localhost:3010/start`, tab 2 is `/u/demo-insurance-agency/
 | 1:20–1:40 | **5. Vendor Scout shortlist** (during the render) | Switch to **Vendor Scout** (pre-run thread) | Shortlist table: MOQ / price / lead time | "Meanwhile Vendor Scout searched the web for mills and cut-and-sew shops and ranked them by minimum order, price and lead time. The mills are real, from Logan's product research." |
 | 1:40–1:50 | **4b. Hoodie reveal** | Back to **Design Studio** (`jobs_wait` done) | Oatmeal hoodie, small "No Thought" wordmark | "And there's the concept piece. Natural fabric, quiet logo. Very No Thought. Next drop is the run short, and Design Studio does that one tomorrow." |
 | 1:50–2:10 | **6. RFQ held for approval (Track 3)** | **Outreach & Negotiation**: `Draft an RFQ to #4 for the hoodie` | RFQ draft with **"Held for founder approval"** | "It writes the RFQ in Logan's voice and stops. A one-person company with a team that can't send, spend or sign without the founder. That's Track 3." |
-| 2:10–2:20 | **7. Thumbs-down** | Back in tab 1 (`/u/no-thought/team`), **Step 2 · Rate the work**: 👎 on the **Outreach & Negotiation** card, comment `Ask for the minimum order quantity up front.` | Feedback saved (`POST /api/orgs/no-thought/feedback`, Bearer token) | "Logan coaches it like a new hire. One thumb, one sentence." |
+| 2:10–2:20 | **7. Thumbs-down** | Back in tab 1 (`/u/no-thought/team`), **Step 2 · Rate the work**: 👎 on the **Outreach & Negotiation** card, comment `Ask for the minimum order quantity up front.` | Feedback saved (`POST /api/orgs/no-thought/feedback`, Bearer token) | "Logan coaches it like a new hire. One thumb, one sentence. Second time this week, so now it's a pattern." |
 | 2:20–2:35 | **8. Retro** | **Ops & Retro**: `Run the retro now` (calls `POST /api/orgs/no-thought/retro`). Backup: click **Run retro (1 new feedback)** on the team page | Proposal: **add a rule** to Outreach & Negotiation ("ask for MOQ up front"), **awaiting founder approval** in `/api/orgs/no-thought/changes`; approve, then Chief of Staff marks it applied | "The retro turns feedback into a fix, and even the fix waits for Logan. The team gets better every week." |
 | 2:35–2:55 | **Insurance swap** | Tab 2: `/u/pecan-street-insurance-group/team` if Claude Code serves `data-seed/pecan-street-insurance-group.plan.json` (our 6 bots); otherwise `/u/demo-insurance-agency/team` (the **See a demo agency** button, app-generated roster). Check which at 7:10. Don't re-submit live | Agency Chief of Staff, Intake & Inbox, Renewals & Follow-ups, COI Desk, Quote Prep, Compliance & Ops | "Same generator, any business. Here's an insurance agency: COI desk, renewals, quotes, all founder-approved." |
 | 2:55–3:00 | Close | Map | — | "One intake. One click. One founder in control. That's Groklactic." |
@@ -236,6 +236,14 @@ Reset and lock (8:22–8:25):
 ---
 
 ## 5. Open risks and TODOs
+
+**Retro (GM final, 6:36 PM CT):** code stays at `RULE_AFTER_DOWNS = 2`. Right after `?reset=1`, Jeff posts the first 👎 from Logan's Mac with Setup Architect's command (no retro run):
+
+```
+curl -X POST http://localhost:3010/api/orgs/no-thought/feedback -H "Authorization: Bearer $EYE_OF_GROK_INGEST_TOKEN" -H "Content-Type: application/json" -d '{"botId":"outreach-and-negotiation","rating":"down","tag":"missing","comment":"ask for the minimum order quantity up front","source":"owner"}'
+```
+
+Logan's live 👎 (same comment) is the second, which triggers the proposal.
 
 **Decided 6:35 PM CT (GM):** no tunnel. The install uses the export files; the 👎 and the retro run in Logan's browser on `localhost:3010`. Push only from `~/Projects/groklactic/groklactic-harness` (`bot-team`) by 7:45.
 

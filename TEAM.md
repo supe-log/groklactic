@@ -8,19 +8,27 @@ All times are CT. Build stops at 8:30, when judges come around for about 5 minut
 - 7:10 dry run with Demo Coach.
 - Approves the setup-template export card in his 1:1 chat with Setup Architect.
 
-**Isaac (narrator and Track 2 tester)**
-Isaac tests on **his own Grok Bot**, which has never seen the product. That's the Track 2 proof.
-1. Start a brand-new Grok Bot. Either install the **Setup Chief of Staff** template from its share link (posted in the team chat once Logan publishes it) and say "Build my team (dry run) for No Thought", or paste in only this:
-   "Clone https://github.com/supe-log/groklactic (branch bot-team). Read `bot-team/setup-chief-of-staff/template.md`, then follow `bot-team/setup-chief-of-staff/skills/getting-started/SKILL.md` exactly as a dry run for orgId no-thought. Create nothing; send nothing. Show me the build receipt."
-2. Log every step that needs a human, and every error, in the team chat. Report by 7:25.
-3. Learn the narration in `bot-team/demo.md`, including the line "Second time this week, so now it's a pattern."
+**Isaac (narrator and fresh-bot tester)**
+Isaac uses **a brand-new Grok Bot that has never seen any of this**. That's the Track 2 proof and our accuracy check.
+1. **Install, by 7:05.** Paste in only: "Read https://github.com/supe-log/groklactic (branch bot-team), install the Setup Chief of Staff from `bot-team/setup-cos-template.md`, then say Build my team for the business No Thought." Don't add any other hints.
+2. **Accuracy scorecard, posted in the team chat by 7:25.** Mark each line pass or fail, and note anything that needed a human:
+   - [ ] Six bots built, with names matching `bot-team/clothing-team.json`: Brand Chief of Staff, Design Studio, Vendor Scout, Outreach & Negotiation, Launch & Growth, Ops & Retro.
+   - [ ] Every routine paused.
+   - [ ] The founder rules are in each bot: nothing sends, no PO, deposit, publish or spend without approval, nothing over $500, Stripe test mode.
+   - [ ] Outreach & Negotiation, prompt "Draft an RFQ for the hoodie": a real RFQ draft, held for approval and not sent.
+   - [ ] Launch & Growth, prompt "Is the hoodie merino, and when does it ship?": answers from the brand facts and doesn't make anything up.
+   - [ ] Launch & Growth, prompt "I want a refund": held for the founder.
+   - [ ] Ops & Retro, prompt "Run the retro now": proposes exactly one change and waits for approval.
+   - [ ] Count how many questions it asked and how many minutes the whole run took.
+3. **In the demo** Isaac also plays the customer, asking the merino, ship-date and refund questions live.
+4. **Narration.** He reads the 60-second pitch in `bot-team/demo.md` aloud twice against a timer.
 
-**Jeff (customer, fallback, and reset)**
-1. **The customer.** In the live demo, Jeff sends the brand's Launch & Growth bot a message as a customer: "Is the hoodie merino, and when does it ship? Also can I get a refund if it doesn't fit?" The bot answers the facts and holds the refund question for the founder.
-2. **Fallback.** During the 7:10 dry run, screenshot every screen that works into `bot-team/fallback/` (numbered `01-...png`).
-3. **Reset.** Rehearse only on a throwaway id (for example `nt-rehearse-1`), because the reset doesn't clear old feedback. Keep `no-thought` clean for the judges. Right before judging, post the first 👎 on Outreach & Negotiation with the `curl` in `bot-team/demo.md`.
+**Reset and screenshots (Chief of Staff, on Logan's Mac)**
+- Rehearse only on a throwaway id such as `nt-rehearse-1`, because the reset doesn't clear old feedback. Keep `no-thought` clean for the judges, and post its first 👎 just before 8:30.
+- During the 7:10 dry run, capture each screen that works into `bot-team/fallback/`.
 
-4. **Adapter plugin.** Dylan's email asks every team to add it. Install it on your Grok Bot and check that it loads.
+**Jeff (optional)**
+- Install the Adapter plugin, which Dylan's email asks for. Be a second pair of eyes during rehearsal.
 
 ## Timeline
 - 7:10 cutoff: if the No Thought six-bot plan isn't served by the app, the dry run and the demo lead with insurance (`/u/ins-test-1842/team` works today), and clothing becomes the Higgsfield bonus beat.

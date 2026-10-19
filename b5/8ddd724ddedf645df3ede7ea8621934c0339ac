@@ -1,0 +1,16 @@
+SETUP.md
+  h_cb88e130246132 1-29
+scripts/demo-check.sh
+  h_cb88e130246132 1-24
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "b58ddd724ddedf645df3ede7ea8621934c0339ac",
+  "prompts": {},
+  "humans": {
+    "h_cb88e130246132": {
+      "author": "Logan May (Work) <loganwork@Logans-MacBook-Pro.local>"
+    }
+  }
+}

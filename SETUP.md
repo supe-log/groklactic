@@ -20,7 +20,7 @@
 5. Click **Run retro**, approve the proposed rule.
 
 ## Before judging
-- `./scripts/demo-check.sh <org-id>` checks start, plan, team page, feedback, retro.
+- `INGEST_TOKEN=<token> ./scripts/demo-check.sh <org-id>` (set `INDUSTRY=small_business` until clothing_brand lands) checks start, plan, team page, feedback, retro.
 - Rehearse on a throwaway id (e.g. `no-thought-rehearsal`). `?reset=1` resets the org map only, not the team plan or feedback stored in the database, so keep `no-thought` clean for the real run.
 
 ## Rules

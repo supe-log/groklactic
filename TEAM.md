@@ -44,3 +44,6 @@ Isaac uses **a brand-new Grok Bot that has never seen any of this**. That's the 
 ## Rehearsal rule
 Rehearse on a throwaway id (e.g. `no-thought-rehearsal`), never on `no-thought`. `?reset=1` does not clear stored feedback.
 Quick health check on Logan's Mac: `INGEST_TOKEN=<token> INDUSTRY=small_business ./scripts/demo-check.sh <throwaway-id>`.
+
+## Isaac fresh-bot accuracy test
+See [ISAAC-TEST.md](ISAAC-TEST.md): 10 steps scored 0/1/2, pass at 16/20, results by 7:25.

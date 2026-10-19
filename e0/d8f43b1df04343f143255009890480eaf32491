@@ -1,0 +1,26 @@
+bot-team/clothing-team.json
+  h_cb88e130246132 6,83-86,739,761-767,795-798,876-881
+bot-team/exports/no-thought.teamplan.json
+  h_cb88e130246132 4-5,184-185,203-207
+bot-team/tools/clothing_brand_data.py
+  h_cb88e130246132 63,227-244,358,363-364
+bot-team/verticals/clothing-brand/bots/launch-growth/instructions.md
+  h_cb88e130246132 24,34,39
+bot-team/verticals/clothing-brand/bots/launch-growth/skills/customer-reply/SKILL.md
+  h_cb88e130246132 1-18
+bot-team/verticals/clothing-brand/plan/clothing-brand.plan.json
+  h_cb88e130246132 6,83-86,727,746-751,779-782,860-865
+bot-team/verticals/clothing-brand/team.json
+  h_cb88e130246132 6,83-86,739,761-767,795-798,876-881
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "e0d8f43b1df04343f143255009890480eaf32491",
+  "prompts": {},
+  "humans": {
+    "h_cb88e130246132": {
+      "author": "Logan May (Work) <loganwork@Logans-MacBook-Pro.local>"
+    }
+  }
+}

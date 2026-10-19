@@ -15,7 +15,7 @@ The two verticals are a **clothing brand** (No Thought: vendor search, RFQs and 
 - `bot-team/clothing-team.json` and `bot-team/insurance-team.json` are self-contained rosters: the plan, every skill, and the trigger phrases.
 - `bot-team/verticals/` holds the per-vertical packs. `bot-team/exports/` has plans in the app's own format.
 - `bot-team/setup-chief-of-staff/` is the installer bot and its getting-started skill.
-- `bot-team/tools/validate.py` validates a team: `python bot-team/tools/validate.py`
+- `bot-team/tools/validate.py` validates a team: `cd bot-team && python3 -m venv .venv && .venv/bin/pip install jsonschema && .venv/bin/python tools/validate.py`
 
 ## Guardrails
 Every bot drafts and nothing sends without the founder. Payments stay in Stripe test mode, Higgsfield spend is capped, and nothing goes over $500 without approval. Every routine starts paused.

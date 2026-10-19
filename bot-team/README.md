@@ -57,7 +57,7 @@ demo.md, plan.md                  owned by Demo Coach / GM (not generated here)
 
 ## How a Track 2 executor bot runs it (no human)
 1. Read `setup-cos-template.md`. Adopt its instructions and the getting-started skill.
-2. Treat "Build my team (dry run)" as the trigger. Fetch `GET {EYE_OF_GROK_BASE_URL}/api/plan?business_id=pecan-street-insurance-group`. If that fails, use `plan/insurance-agency.plan.json`, then `insurance-team.json`.
+2. Treat "Build my team (dry run)" as the trigger. Fetch `GET {EYE_OF_GROK_BASE_URL}/api/orgs/{orgId}/plan` (orgId `no-thought` or `pecan-street-insurance-group`). If that fails, use `exports/{orgId}.teamplan.json`, then the local plan in `plan/` or `verticals/*/plan/`. If `EYE_OF_GROK_INGEST_TOKEN` is unset, skip every write and work from the local files.
 3. Validate: `python3 -m venv .venv && .venv/bin/pip install jsonschema && .venv/bin/python tools/validate.py`
 4. Walk the bots in order. Real build: CreateAgent (skip a name that already exists), UpdateSkill write, SearchPlugins then InstallPlugin by id, UpdateRoutine create with `enabled:false`, then post the approval rules. Dry run: record each item as `would_create`.
 5. Write `runtime/build-receipt.json` (shape in the skill). `routines_enabled` must be 0.

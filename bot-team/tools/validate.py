@@ -23,6 +23,11 @@ def pii_scan(path):
 def check_plan(p):
     plan = load(p)
     if plan is None: return
+    if "orgId" in plan:  # TeamPlan export (app format): check against teamplan.schema.json only
+        tsch = load(os.path.join(ROOT, "exports", "teamplan.schema.json"))
+        for e in Draft202012Validator(tsch).iter_errors(plan):
+            errs.append(f"{p}: teamplan schema: {'/'.join(map(str, e.path))}: {e.message}")
+        return
     sch = load(os.path.join(ROOT, "plan.schema.json"))
     for e in Draft202012Validator(sch).iter_errors(plan):
         errs.append(f"{p}: schema: {'/'.join(map(str, e.path))}: {e.message}")
@@ -36,6 +41,7 @@ def check_plan(p):
         for h in b.get("handoffs", []):
             if h["to"] not in slugs: errs.append(f"{p}: {b['slug']} handoff to unknown bot {h['to']}")
         for s in b.get("skills", []):
+            if "file" not in s: continue  # TeamPlan skills carry inline content
             f = os.path.join(ROOT, s["file"])
             if not os.path.exists(f): errs.append(f"{p}: missing skill file {s['file']}"); continue
             head = open(f).read().split("---")

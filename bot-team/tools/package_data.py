@@ -6,7 +6,7 @@ TZ = "America/Chicago"
 PLAN_ID = "groklactic-insurance-agency-v1"
 BUSINESS_ID = "pecan-street-insurance-group"
 
-RUNTIME = "/workspace/groklactic/runtime"
+RUNTIME = "$PKG/runtime"
 
 GLOBAL_GUARDRAILS = [
     {"id": "G1-draft-only", "rule": "Every client-, carrier-, or prospect-facing message (email, text, Slack Connect, portal note) is created ONLY as a draft through a DraftExternalMessage approval card held for the founder. Never auto-send, never call a connector's send tool, never schedule-send."},
@@ -218,9 +218,9 @@ skill("compliance-ops", "weekly-retro", "Weekly retro",
 Runs two ways, same steps: (a) the paused weekly routine once the founder enables it, or (b) ON DEMAND when the founder says **"Run the retro now"** in the Compliance & Ops chat. On demand, run it inline right away; no routine needs to be enabled.
 
 1. Gather feedback thumbs:
-   - Try `GET {{{{EYE_OF_GROK_BASE_URL}}}}/api/feedback?business_id={{{{business_id}}}}` (base URL from `/workspace/groklactic/config/eye-of-grok.config.json`, default `http://localhost:3010`; that host is the founder's Mac, so run the request on the founder's registered desktop if the box cannot reach it).
+   - Try `GET {{{{EYE_OF_GROK_BASE_URL}}}}/api/feedback?business_id={{{{business_id}}}}` (base URL from `$PKG/config/eye-of-grok.config.json`, default `http://localhost:3010`; that host is the founder's Mac, so run the request on the founder's registered desktop if the box cannot reach it).
    - Always also read `{runtime}/feedback.jsonl`. Merge, de-duplicate by (bot, item_ref, ts).
-   - Also read the last 7 days of `{runtime}/approvals.jsonl` and `{runtime}/eo-log.jsonl`. If no runtime data exists yet, use `/workspace/groklactic/examples/seed-feedback.jsonl` and say so.
+   - Also read the last 7 days of `{runtime}/approvals.jsonl` and `{runtime}/eo-log.jsonl`. If no runtime data exists yet, use `$PKG/examples/seed-feedback.jsonl` and say so.
 2. Compute per bot: drafts created, approved as-is, edited before send, rejected, thumbs up/down, top thumbs-down reasons, guardrail escalations.
 3. Pick the SINGLE highest-leverage fix: the most common thumbs-down reason, the most-edited draft type, or a repeated manual step.
 4. Write the proposal to `{runtime}/retro/{{{{yyyy-mm-dd}}}}-proposal.md`:

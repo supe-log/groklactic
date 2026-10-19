@@ -17,16 +17,22 @@ Runs on **"Build my team"** (aliases above). On the very first conversation, fir
 ## 0. Bootstrap the package (PKG)
 The plan files, exports, and validator live in the public repo `supe-log/groklactic` (branch `bot-team`). Find or fetch them on your box, then use `$PKG` for every path below (re-set it in each Shell call):
 ```bash
-for d in /workspace/groklactic /workspace/groklactic-src /workspace/groklactic-src/bot-team; do
-  [ -f "$d/verticals/index.json" ] && [ -f "$d/tools/validate.py" ] && PKG=$d && break; done
-if [ -z "$PKG" ]; then
-  git clone --depth 1 -b bot-team https://github.com/supe-log/groklactic /workspace/groklactic-src \
-  || { mkdir -p /workspace/groklactic-src && curl -fsSL https://codeload.github.com/supe-log/groklactic/tar.gz/refs/heads/bot-team | tar xz -C /workspace/groklactic-src --strip-components=1; }
-  for d in /workspace/groklactic-src/bot-team /workspace/groklactic-src; do
-    [ -f "$d/verticals/index.json" ] && PKG=$d && break; done; fi
+SRC="${GK_SRC:-$PWD/groklactic-src}"
+for d in "$PKG" ./bot-team . "$SRC/bot-team"; do
+  [ -n "$d" ] && [ -f "$d/verticals/index.json" ] && [ -f "$d/tools/validate.py" ] && PKG=$(cd "$d" && pwd) && break; done
+if [ ! -f "$PKG/verticals/index.json" ]; then PKG=
+  git clone --depth 1 -b bot-team https://github.com/supe-log/groklactic "$SRC" \
+  || { mkdir -p "$SRC" && curl -fsSL https://codeload.github.com/supe-log/groklactic/tar.gz/refs/heads/bot-team | tar xz -C "$SRC" --strip-components=1; }
+  [ -f "$SRC/bot-team/verticals/index.json" ] && PKG="$SRC/bot-team"; fi
 echo "PKG=$PKG"; mkdir -p "$PKG/runtime"
 ```
-If PKG is still empty, report it and continue with the eye-of-grok plan only (no local fallback). Paths inside plans (`plan_file`, `team_file`, skill files) are relative to `$PKG`.
+`$PKG` is the package root (the repo's `bot-team/` folder); every `$PKG/...` path in plans, skills, and instructions resolves against it, and the shared runtime dir is `$PKG/runtime/`. If PKG is still empty, report it and continue with the eye-of-grok plan only (no local fallback). Paths inside plans (`plan_file`, `team_file`, skill files) are relative to `$PKG`.
+
+## 0b. Brand discovery first (clothing / merch businesses)
+- If the business is a clothing brand or wants merch (any business: e.g. a traveling chess club wanting tees) **and** business_id is **not** `no-thought`: use the clothing pack's generic roles (`$PKG/verticals/clothing-brand/`) with a **fresh brand profile**. Before building, run the steps in `$PKG/verticals/clothing-brand/bots/brand-chief-of-staff/skills/brand-discovery/SKILL.md` yourself: one question max for website/social links and uploads (or 3 lines of description if there are no links; mark `founder-stated`), use the optional Adapter plugin (id 70141458) first if its tools are available, else web fetch/browser, and write `$PKG/runtime/clothing-brand/brand-profile.json` (every fact sourced or marked `unverified`; never invent). Unattended: proceed with whatever was given.
+- Use the profile's `business_id`/`brand_name` slug as orgId (not `no-thought`) and fill `{{brand_name}}` etc. in bot instructions from it. Nothing from the No Thought example (its palette, fabrics, city, hero hoodie) may appear in another business's team.
+- business_id `no-thought`: copy `$PKG/verticals/clothing-brand/examples/no-thought.brand-profile.json` to `$PKG/runtime/clothing-brand/brand-profile.json` (worked example) and continue.
+- Skill names are prefixed by vertical (`Clothing · ...`, `Insurance · ...`) so both teams can live on one account; keep the names exactly as in the plan.
 
 ## 1. Mode and inputs
 - Ask one question at a time, only for what is missing: (a) business_id (default: the plan's `business_id`), (b) dry run or real build (default **dry run** the first time), (c) Gmail or Outlook.
@@ -35,13 +41,13 @@ If PKG is still empty, report it and continue with the eye-of-grok plan only (no
 
 ## 2. Pick the vertical and orgId
 - orgId from the setup prompt (eye-of-grok's `setupPrompt` includes it), else the `orgId` from `POST /api/start`, else the default in `$PKG/verticals/index.json`: **`pecan-street-insurance-group`** (insurance), **`no-thought`** (clothing brand).
-- Vertical by orgId/business_id, else industry/alias (insurance agency -> `insurance`; clothing/apparel/athleisure -> `clothing-brand`). Still ambiguous: ask once.
+- Vertical by orgId/business_id, else industry/alias (insurance agency -> `insurance`; clothing/apparel/athleisure/merch -> `clothing-brand`). Still ambiguous: ask once.
 
 ## 3. Fetch the plan (contract: `$PKG/config/eye-of-grok.config.json`)
 Base = env `EYE_OF_GROK_BASE_URL`, default `http://localhost:3010`. Writes send `Authorization: Bearer $EYE_OF_GROK_INGEST_TOKEN` (env only; never print or hardcode it). localhost is the founder's machine: if the box can't reach it, run curl there (Shell with its machineId). 10s timeout.
 1. `GET /api/orgs/{orgId}/plan` -> TeamPlan. **Prefer the app's plan when present.**
 2. 404 / no plan yet: `POST /api/start` with `{orgId, intake:{businessName, industry, teamSize, tools[], painPoints, rules}}` mapped from the vertical's `intake_file`; use the returned `orgId`, GET again.
-3. Unreachable or error: fall back to `$PKG/exports/{insurance|no-thought}.teamplan.json`, then the vertical's full plan (`plan_file` / `team_file`) for skill files, plugins, routine details.
+3. Unreachable or error: fall back to `$PKG/exports/{insurance|no-thought}.teamplan.json` (for a non-no-thought clothing/merch business, use the no-thought export only for its generic roles and the fresh profile for every brand fact), then the vertical's full plan (`plan_file` / `team_file`) for skill files, plugins, routine details.
 4. Mapping: `bots[].id` -> bot slug; `rules[]` -> approval rules; `autonomy` -> draft_only/ask_first wording; `skills[].content` -> UpdateSkill body; `routines[]` -> UpdateRoutine with `enabled:false` whatever the plan says. If a local plan exists for the same orgId, take plugins and Higgsfield steps from it.
 5. Record `plan_source` = `eye-of-grok` | `eye-of-grok-start` | `local-export` | `local-plan`.
 

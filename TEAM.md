@@ -10,7 +10,7 @@ All times are CT. Build stops at 8:30, when judges come around for about 5 minut
 
 **Isaac (narrator and fresh-bot tester)**
 Isaac uses **a brand-new Grok Bot that has never seen any of this**. That's the Track 2 proof and our accuracy check.
-1. **Install, by 7:05.** Paste in only: "Read https://github.com/supe-log/groklactic (branch bot-team), install the Setup Chief of Staff from `bot-team/setup-cos-template.md`, then say Build my team for the business No Thought." Don't add any other hints.
+1. **Install, by 7:05.** Paste in only: "Read https://github.com/supe-log/groklactic (branch bot-team), install the Setup Chief of Staff from `bot-team/setup-chief-of-staff/template.md`, then say Build my team for the business No Thought." Don't add any other hints.
 2. **Accuracy scorecard, posted in the team chat by 7:25.** Mark each line pass or fail, and note anything that needed a human:
    - [ ] Six bots built, with names matching `bot-team/clothing-team.json`: Brand Chief of Staff, Design Studio, Vendor Scout, Outreach & Negotiation, Launch & Growth, Ops & Retro.
    - [ ] Every routine paused.

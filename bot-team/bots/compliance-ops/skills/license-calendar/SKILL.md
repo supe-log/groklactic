@@ -1,5 +1,5 @@
 ---
-name: License & CE calendar
+name: Insurance · License & CE calendar
 description: >-
   Use monthly to check producer license expirations, CE deadlines, and carrier appointment renewals from the agency's compliance sheet.
 ---

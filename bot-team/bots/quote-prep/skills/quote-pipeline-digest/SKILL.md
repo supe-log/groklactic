@@ -1,5 +1,5 @@
 ---
-name: Quote pipeline digest
+name: Insurance · Quote pipeline digest
 description: >-
   Use on the weekday afternoon digest to list quotes by stage and what each is waiting on.
 ---

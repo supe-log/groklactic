@@ -1,0 +1,44 @@
+{
+  "_notice": "WORKED EXAMPLE ONLY. Used only when business_id/slug is `no-thought`. Every other business gets its own profile from Brand discovery at $PKG/runtime/clothing-brand/brand-profile.json.",
+  "brand_name": "No Thought",
+  "business_id": "no-thought",
+  "category": "natural-fabric athleisure (premium DTC)",
+  "what_they_sell": "minimal athleisure in natural-forward fabrics",
+  "audience": "runners, tennis players, and gym-goers who want quiet, well-made basics",
+  "city": "Austin",
+  "region": "Texas, US",
+  "voice": "short, calm, confident; no hype",
+  "aesthetic": "minimalist cool, quiet logos, runway/architecture mood",
+  "palette": [
+    {"name": "Limestone", "hex": "#D9D3C7"},
+    {"name": "Clay", "hex": "#B07A5B"},
+    {"name": "Bark", "hex": "#5B4636"},
+    {"name": "Soft Black", "hex": "#2B2B2B"}
+  ],
+  "wordmark": "No Thought",
+  "hero_product": "oatmeal natural-fabric hoodie with a small 'No Thought' chest wordmark",
+  "materials": "natural-forward fabrics: merino, Tencel/lyocell, performance linen blends, organic cotton + elastane where needed; hero hoodie in merino-back fleece",
+  "price_band": "premium",
+  "values": ["natural-forward fabrics", "community runs in Austin", "limited drops"],
+  "claims_to_avoid": ["greenwashing or sustainability claims without a source", "invented fabric lab numbers", "unverified certifications"],
+  "product_facts": [
+    "The hero hoodie is merino-back fleece (merino wool inside, natural-fiber face).",
+    "It's a preorder drop."
+  ],
+  "ship_window": "ships about 6 weeks after the preorder closes",
+  "payments_note": "Checkout runs in Stripe test mode for now; nothing is charged.",
+  "reference_mills_unverified": ["Pontetorto (fleece mill, mood reference only; unverified)"],
+  "sources": {
+    "brand_name": "founder-stated",
+    "category": "founder-stated (No Thought GM/Brand/Product/Growth bot briefs)",
+    "aesthetic": "founder-stated (No Thought Brand brief)",
+    "palette": "founder-stated",
+    "materials": "founder-stated (No Thought Product brief)",
+    "hero_product": "founder-stated",
+    "product_facts": "founder-stated (demo brand facts)",
+    "ship_window": "founder-stated (demo brand facts)",
+    "city": "founder-stated"
+  },
+  "profile_source": "example",
+  "updated_at": "2026-10-19T19:00:00-05:00"
+}

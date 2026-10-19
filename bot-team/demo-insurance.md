@@ -23,7 +23,7 @@
 | groklactic repo github.com/supe-log/groklactic | **Exists, empty** as of 6:13 PM CT | GitHub API |
 | Template install link `grokbot://app/v1/bot-template?id=<share id>` | Link format confirmed. **Share id = `[TODO: Logan exports the Setup Chief of Staff template from Grok Bot by 6:50 PM CT (GM, moved up); first full dry run at 7:00 PM CT]`** | Kickoff |
 | Repo: https://github.com/supe-log/groklactic (confirmed by Logan) | Confirmed | Logan |
-| `/workspace/groklactic/insurance-team.json` (6 bots, 14 skills, 9 paused routines) + `setup-cos-template.md` | **Done**, validator passes (`.venv/bin/python tools/validate.py`). Chief of Staff will put them on a `bot-team` branch of the groklactic repo; keep `.venv/` and `runtime/` out | Kickoff |
+| `/workspace/groklactic/insurance-team.json` (6 bots, 14 skills, 9 paused routines) + `setup-chief-of-staff/template.md` | **Done**, validator passes (`.venv/bin/python tools/validate.py`). Chief of Staff will put them on a `bot-team` branch of the groklactic repo; keep `.venv/` and `runtime/` out | Kickoff |
 | Roster (final names): Agency Chief of Staff, Intake & Inbox, Renewals & Follow-ups, COI Desk, Quote Prep (draft-only), Compliance & Ops (runs the weekly retro). The Setup Chief of Staff is the installer template that builds them | **Confirmed** by the Setup Architect, 6:17 PM CT | Setup Architect |
 | COI Desk holds its reply as a draft for founder approval | **Confirmed** by the Setup Architect | Steering |
 | Retro skill turns thumbs feedback into a proposed fix | **Confirmed** by the Setup Architect | Steering |
@@ -241,7 +241,7 @@ Reset and lock checklist (8:22–8:25):
 - [ ] Grok Bot template **share id** for `grokbot://app/v1/bot-template?id=…`
 - [ ] "Install in Grok Bot" button exists on the plan/map page, or the driver pastes the link
 - [ ] Exact bot display names from `insurance-team.json`
-- [ ] Setup CoS trigger phrase (from `setup-cos-template.md`)
+- [ ] Setup CoS trigger phrase (from `setup-chief-of-staff/template.md`)
 - [x] Retro trigger: `Run the retro now` in Compliance & Ops chat (confirmed 6:17 PM CT)
 - [ ] Whether the Setup CoS POSTs the roster to `/api/local/snapshot` (map redraw) or the map comes from the plan endpoint
 - [ ] Whether `?reset=1` resets tonight's new data

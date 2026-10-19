@@ -1,5 +1,5 @@
 ---
-name: Quote packet
+name: Insurance · Quote packet
 description: >-
   Use when a new quote or remarket is requested to assemble a submission packet and a side-by-side comparison draft. Draft-only; never binds or recommends coverage.
 ---

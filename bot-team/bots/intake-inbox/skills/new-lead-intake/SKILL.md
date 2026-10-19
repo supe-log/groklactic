@@ -1,5 +1,5 @@
 ---
-name: New lead intake
+name: Insurance · New lead intake
 description: >-
   Use when a new prospect contacts the agency (email, web form, call note) to build a PII-safe intake record and checklist for Quote Prep.
 ---

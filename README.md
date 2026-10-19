@@ -8,7 +8,7 @@ The two verticals are a **clothing brand** (No Thought: vendor search, RFQs and 
 
 1. Run the web app ([eye-of-grok](https://github.com/supe-log/eye-of-grok)): `npm install && npm run dev -- -p 3010`
 2. Open `http://localhost:3010/start`, pick **Clothing brand**, use the slug `no-thought`, and click **Design my Bot team**.
-3. In Grok Bot, install the **Setup Chief of Staff** template (one-click share link; its text is in `bot-team/setup-cos-template.md`) and say **"Build my team"**. No template? Tell any Grok Bot: "Clone this repo and follow `bot-team/setup-chief-of-staff/skills/getting-started/SKILL.md`." The skill fetches this repo by itself. It fetches the plan from eye-of-grok and falls back to `bot-team/exports/` if the app can't be reached.
+3. In Grok Bot, install the **Setup Chief of Staff** template (one-click share link; its text is in `bot-team/setup-chief-of-staff/template.md`) and say **"Build my team"**. No template? Tell any Grok Bot: "Clone this repo and follow `bot-team/setup-chief-of-staff/skills/getting-started/SKILL.md`." The skill fetches this repo by itself. It fetches the plan from eye-of-grok and falls back to `bot-team/exports/` if the app can't be reached.
 4. Give the work 👍 or 👎 on the team page, then say **"Run the retro now"** to Ops & Retro, or click **Run retro**. The improvement it proposes waits for your approval.
 
 ## Layout

@@ -1,7 +1,7 @@
 # Demo beat: "Design our first drop" (No Thought, orgId `no-thought`)
 
 Hero product (`hero_product`, configurable): **natural-fabric hoodie**. Detail: an oatmeal hoodie with a small "No Thought" chest wordmark.
-Backup mockup, in case of a live failure: `/workspace/groklactic/clothing/mockup-hoodie-01.png` (also at `fallback/04-hoodie-mockup.png`).
+Backup mockup, in case of a live failure: `fallback/04-hoodie-mockup.png` in the package root (No Thought example only).
 
 1. **Founder → Brand Chief of Staff:** "Design our first drop." This runs the Drop kickoff skill, which briefs Design Studio and Vendor Scout in parallel.
 2. **Design Studio** runs the verified Higgsfield steps (tested live: under 30s and 0.25 credits per image):

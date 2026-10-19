@@ -16,7 +16,7 @@ Groklactic turns a short business intake into a founder-approved Grok Bot team. 
 | Quote Prep | Submission packets + comparison drafts (draft-only, never binds or submits) | Quote digest 3:42 PM CT weekdays |
 | Compliance & Ops | E&O log audit, license/CE calendar, **weekly self-improvement retro** | Retro Fri 3:47 PM CT; E&O audit 4:52 PM CT weekdays; license check 9:37 AM CT on the 1st |
 
-The **Setup Chief of Staff** (template in `setup-cos-template.md`) builds these 6 bots. It is not one of them.
+The **Setup Chief of Staff** (template in `setup-chief-of-staff/template.md`) builds these 6 bots. It is not one of them.
 
 ## Trigger phrases
 - `setup_trigger_phrase`: **"Build my team"** (aliases: "build the team from eye-of-grok", "rebuild my team", "build my team (dry run)"). The Setup CoS's first message tells the founder to say it.
@@ -37,7 +37,7 @@ G1 client-facing messages are draft-only (DraftExternalMessage card, never auto-
 ```
 README.md                         this file
 insurance-team.json               SELF-CONTAINED roster: plan + every SKILL.md inline + trigger phrases
-setup-cos-template.md             Setup Chief of Staff template + getting-started skill inline
+setup-chief-of-staff/template.md  Setup Chief of Staff template (getting-started skill in setup-chief-of-staff/skills/getting-started/SKILL.md)
 intake.schema.json                JSON Schema for any business intake
 intake/insurance-agency.intake.json   example intake (fictional Dana / Pecan Street Insurance Group)
 plan.schema.json                  JSON Schema the plan validates against
@@ -56,7 +56,7 @@ demo.md, plan.md                  owned by Demo Coach / GM (not generated here)
 ```
 
 ## How a Track 2 executor bot runs it (no human)
-1. Read `setup-cos-template.md`. Adopt its instructions and the getting-started skill.
+1. Read `setup-chief-of-staff/template.md` (adopt its instructions) and `setup-chief-of-staff/skills/getting-started/SKILL.md`.
 2. Treat "Build my team (dry run)" as the trigger. Fetch `GET {EYE_OF_GROK_BASE_URL}/api/orgs/{orgId}/plan` (orgId `no-thought` or `pecan-street-insurance-group`). If that fails, use `exports/{orgId}.teamplan.json`, then the local plan in `plan/` or `verticals/*/plan/`. If `EYE_OF_GROK_INGEST_TOKEN` is unset, skip every write and work from the local files.
 3. Validate: `python3 -m venv .venv && .venv/bin/pip install jsonschema && .venv/bin/python tools/validate.py`
 4. Walk the bots in order. Real build: CreateAgent (skip a name that already exists), UpdateSkill write, SearchPlugins then InstallPlugin by id, UpdateRoutine create with `enabled:false`, then post the approval rules. Dry run: record each item as `would_create`.
@@ -82,7 +82,7 @@ No SearchPlugins tool was available to the authoring bot, so **no plugin ids are
 - Stripe: id 47709840 in Grok Bot's purchases skill is **Stripe Link** (a payer wallet), not the Stripe merchant API. Don't use it for invoicing.
 
 ## Safe to publish to github.com/supe-log/groklactic (do NOT push from bots)
-Safe: `README.md`, `insurance-team.json`, `setup-cos-template.md`, `intake.schema.json`, `plan.schema.json`, `intake/`, `plan/`, `bots/`, `setup-chief-of-staff/`, `config/eye-of-grok.config.json` (no secrets), `examples/`, `tools/*.py`, plus `demo.md` and `plan.md` if their owners agree.
+Safe: `README.md`, `insurance-team.json`, `setup-chief-of-staff/template.md`, `intake.schema.json`, `plan.schema.json`, `intake/`, `plan/`, `bots/`, `setup-chief-of-staff/`, `config/eye-of-grok.config.json` (no secrets), `examples/`, `tools/*.py`, plus `demo.md` and `plan.md` if their owners agree.
 Do NOT publish: `.venv/`, `runtime/` (live approvals and logs), any `.env*`, `~/.grokbot`, `grok-bot-app/`, or any ingest token.
 
 ## Open questions

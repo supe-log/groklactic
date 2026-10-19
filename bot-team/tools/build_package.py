@@ -30,7 +30,7 @@ def instructions(m, b):
     L += ["", "## Routines (all ship PAUSED; founder enables)"]
     L += [f"- {r['name']}: `{r['cron_local']}` ({r['timezone']})" for r in b["routines"]]
     rt = m.RUNTIME
-    L += ["", "## Shared working files (on the shared box)",
+    L += ["", "## Shared working files (`$PKG` = the package root, i.e. the repo's bot-team/ folder)",
           f"- Approvals: `{rt}/approvals.jsonl` - Handoffs: `{rt}/handoffs.jsonl` - Feedback: `{rt}/feedback.jsonl`",
           "Append only. Never delete or rewrite lines.", "",
           "## Style", "Short, plain, professional. Times in America/Chicago with 'CT'. Record references, never raw PII.",
@@ -41,10 +41,10 @@ def skill_md(s): return f"---\nname: {s['name']}\ndescription: >-\n  {s['descrip
 
 RETRO = {
  "insurance": dict(slug="compliance-ops", chat_name="Compliance & Ops", cos_name="Agency Chief of Staff", guard_range="G1-G8",
-   seed="/workspace/groklactic/examples/seed-feedback.jsonl",
+   seed="$PKG/examples/seed-feedback.jsonl",
    example="2 of 3 COI thumbs-downs say the reply lacked a turnaround time -> kind=add_rule, botId=coi-desk: add to `bots/coi-desk/skills/coi-request/SKILL.md` step 5 the line 'State when the signed final certificate will be sent ({{coi_turnaround_hours}}h).'"),
  "clothing-brand": dict(slug="ops-retro", chat_name="Ops & Retro", cos_name="Brand Chief of Staff", guard_range="G1-G10",
-   seed="/workspace/groklactic/verticals/clothing-brand/examples/seed-feedback.jsonl",
+   seed="$PKG/verticals/clothing-brand/examples/seed-feedback.jsonl",
    example="thumbs-down on RFQ-0001, 'ask for the minimum order quantity up front' -> kind=add_rule, botId=outreach-and-negotiation: in `verticals/clothing-brand/bots/outreach-and-negotiation/skills/rfq-draft/SKILL.md` step 2, add as the FIRST ask line: '- First question: \"What is your MOQ per style and per colorway for this item?\"'"),
 }
 AUTONOMY = {
@@ -57,6 +57,7 @@ GROUPS = {
  "clothing-brand": [{"id": "founder-approvals", "name": "Founder approvals", "purpose": "Every outbound draft, spend, publish, PO, and rule change lands here for the founder.", "memberIds": ["brand-chief-of-staff", "design-studio", "vendor-scout", "outreach-and-negotiation", "launch-growth", "ops-retro"]},
                     {"id": "first-drop", "name": "First drop", "purpose": "Design -> sourcing -> RFQ for the hero product.", "memberIds": ["brand-chief-of-staff", "design-studio", "vendor-scout", "outreach-and-negotiation"]}],
 }
+PREFIX = {"insurance": "Insurance · ", "clothing-brand": "Clothing · "}
 EXPORT_NAME = {"insurance": "insurance", "clothing-brand": "no-thought"}
 
 def eog_intake(vertical, intake):
@@ -70,7 +71,22 @@ def eog_intake(vertical, intake):
 def build(vertical):
     m = importlib.import_module(VERTICALS[vertical])
     G = lambda n, d=None: getattr(m, n, d)
-    import eog
+    import eog, re
+    # Prefix skill names by vertical so both teams can coexist on one account (ids unchanged).
+    pre = PREFIX[vertical]
+    orig = {}
+    for sl in m.SKILLS.values():
+        for s in sl:
+            if not s["name"].startswith(pre):
+                orig[s["name"]] = pre + s["name"]; s["name"] = pre + s["name"]
+    if orig:
+        rx = re.compile("@(" + "|".join(re.escape(k) for k in sorted(orig, key=len, reverse=True)) + ")")
+        sub = lambda x: rx.sub(lambda mm: "@" + orig[mm.group(1)], x)
+        for sl in m.SKILLS.values():
+            for s in sl: s["body"] = sub(s["body"])
+        for b in m.BOTS:
+            b["role_text"] = sub(b["role_text"])
+            for r in b["routines"]: r["prompt"] = sub(r["prompt"])
     rc = RETRO[vertical]
     for s in m.SKILLS[rc["slug"]]:
         if s["id"] == "weekly-retro":
@@ -100,7 +116,7 @@ def build(vertical):
             "industry": G("INDUSTRY", "independent_insurance_agency"), "timezone": m.TZ,
             "example_data_notice": G("EXAMPLE_NOTICE", "All business details are fictional example data. All client/person fields are {{placeholders}}.")}
     for k, n in [("baseline_source", "BASELINE_SOURCE"), ("hero_product", "HERO_PRODUCT"), ("hero_product_detail", "HERO_PRODUCT_DETAIL"),
-                 ("spend_cap_usd", "SPEND_CAP_USD"), ("credit_cap_per_run", "CREDIT_CAP_PER_RUN")]:
+                 ("spend_cap_usd", "SPEND_CAP_USD"), ("credit_cap_per_run", "CREDIT_CAP_PER_RUN"), ("brand_profile", "BRAND_PROFILE")]:
         if G(n) is not None: plan[k] = G(n)
     plan.update({"setup_trigger_phrase": m.SETUP_TRIGGER_PHRASE, "setup_trigger_aliases": m.SETUP_TRIGGER_ALIASES,
                  "on_demand_phrases": m.ON_DEMAND, "global_guardrails": m.GLOBAL_GUARDRAILS,

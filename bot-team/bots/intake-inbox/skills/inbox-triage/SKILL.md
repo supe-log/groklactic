@@ -1,5 +1,5 @@
 ---
-name: Inbox triage
+name: Insurance · Inbox triage
 description: >-
   Use on each inbox sweep or when the founder forwards mail: classify new messages in the agency inbox, label them, and hand each to the right bot. Never replies on its own.
 ---

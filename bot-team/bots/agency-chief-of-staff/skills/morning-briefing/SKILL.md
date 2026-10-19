@@ -1,11 +1,11 @@
 ---
-name: Morning briefing
+name: Insurance · Morning briefing
 description: >-
   Use every weekday morning (or when the founder asks 'what's on today') to build a short agency briefing: approvals waiting, renewals due, COI requests open, quotes in progress, and anything a specialist bot escalated.
 ---
 # Morning briefing
 
-1. Read the shared queue files on the box: `/workspace/groklactic/runtime/approvals.jsonl`, `/workspace/groklactic/runtime/handoffs.jsonl`, `/workspace/groklactic/runtime/eo-log.jsonl` (last 24h).
+1. Read the shared queue files on the box: `$PKG/runtime/approvals.jsonl`, `$PKG/runtime/handoffs.jsonl`, `$PKG/runtime/eo-log.jsonl` (last 24h).
 2. Check the founder's calendar for today (calendar connector) and list client meetings by time only with a {{client_ref}}, not full details.
 3. Summarize in this order, max 12 lines:
    - Approvals waiting on the founder (count + oldest age).

@@ -1,0 +1,12 @@
+{
+  "_notice": "Shape of the brand profile Brand discovery writes to $PKG/runtime/clothing-brand/brand-profile.json. Every fact needs a source URL in `sources`; unsourced = \"unverified\", told by the founder = \"founder-stated\", bot suggestion = \"suggested\". Never invent. No personal PII.",
+  "brand_name": "", "business_id": "", "category": "", "what_they_sell": "", "audience": "",
+  "city": "", "region": "", "voice": "", "aesthetic": "",
+  "palette": [{"name": "", "hex": ""}],
+  "wordmark": "", "hero_product": "", "materials": "", "price_band": "",
+  "values": [], "claims_to_avoid": [],
+  "product_facts": [], "ship_window": "", "payments_note": "Checkout runs in Stripe test mode; nothing is charged.",
+  "sources": {"<field>": "<URL | founder-stated | unverified | suggested>"},
+  "profile_source": "links | founder-stated | example",
+  "updated_at": ""
+}

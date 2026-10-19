@@ -1,5 +1,5 @@
 """Shared eye-of-grok text + TeamPlan export (contract from harness-types.ts @ e4d57fc)."""
-CFG = "/workspace/groklactic/config/eye-of-grok.config.json"
+CFG = "$PKG/config/eye-of-grok.config.json"
 
 def retro_body(org_id, runtime, seed, chat_name, cos_name, guard_range, example):
     return f"""

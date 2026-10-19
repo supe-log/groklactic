@@ -19,3 +19,8 @@ The two verticals are a **clothing brand** (No Thought: vendor search, RFQs and 
 
 ## Guardrails
 Every bot drafts and nothing sends without the founder. Payments stay in Stripe test mode, Higgsfield spend is capped, and nothing goes over $500 without approval. Every routine starts paused.
+
+## Team docs
+- [TEAM.md](TEAM.md): who does what tonight, the fresh-bot test, timeline.
+- [SETUP.md](SETUP.md): local folder layout, 5-step demo run, smoke test.
+- [bot-team/demo.md](bot-team/demo.md): the judge click path and pitch.

@@ -31,3 +31,7 @@ Isaac tests on **his own Grok Bot**, which has never seen the product. That's th
 - Nothing sends without Logan. All messages are drafts.
 - Payments stay in Stripe test mode, and nothing over $500 goes through without approval.
 - No secrets and no `grok-bot-app/` code in the repo.
+
+## Rehearsal rule
+Rehearse on a throwaway id (e.g. `no-thought-rehearsal`), never on `no-thought`. `?reset=1` does not clear stored feedback.
+Quick health check on Logan's Mac: `INGEST_TOKEN=<token> INDUSTRY=small_business ./scripts/demo-check.sh <throwaway-id>`.

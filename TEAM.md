@@ -17,10 +17,12 @@ Isaac tests on **his own Grok Bot**, which has never seen the product. That's th
 **Jeff (customer, fallback, and reset)**
 1. **The customer.** In the live demo, Jeff sends the brand's Launch & Growth bot a message as a customer: "Is the hoodie merino, and when does it ship? Also can I get a refund if it doesn't fit?" The bot answers the facts and holds the refund question for the founder.
 2. **Fallback.** During the 7:10 dry run, screenshot every screen that works into `bot-team/fallback/` (numbered `01-...png`).
-3. **Reset.** Before judging, run `?reset=1`, then post the first 👎 on Outreach & Negotiation with the `curl` in `bot-team/demo.md`.
+3. **Reset.** Rehearse only on a throwaway id (for example `nt-rehearse-1`), because the reset doesn't clear old feedback. Keep `no-thought` clean for the judges. Right before judging, post the first 👎 on Outreach & Negotiation with the `curl` in `bot-team/demo.md`.
+
+4. **Adapter plugin.** Dylan's email asks every team to add it. Install it on your Grok Bot and check that it loads.
 
 ## Timeline
-- 7:00: the "Clothing brand" option is in the app, or we use "Other small business" with the name No Thought.
+- 7:10 cutoff: if the No Thought six-bot plan isn't served by the app, the dry run and the demo lead with insurance (`/u/ins-test-1842/team` works today), and clothing becomes the Higgsfield bonus beat.
 - 7:05: the customer-reply skill and the template link are ready.
 - 7:10 to 7:40: dry run. 7:45: final push.
 - 8:00: freeze. 8:00 to 8:25: rehearse twice. 8:30: judging.

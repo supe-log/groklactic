@@ -1,0 +1,14 @@
+TEAM.md
+  h_cb88e130246132 20-22,25
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "041ca815df7e3efa17a46fd3d4a589595426fcc2",
+  "prompts": {},
+  "humans": {
+    "h_cb88e130246132": {
+      "author": "Logan May (Work) <loganwork@Logans-MacBook-Pro.local>"
+    }
+  }
+}

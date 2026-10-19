@@ -1,0 +1,19 @@
+bot-team/config/eye-of-grok.config.json
+  s_ce86ff44c4f78b::t_8b3d3656dbc17a 1-27
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "809101af6fd725ca35354085b5150c704a14e5a7",
+  "prompts": {},
+  "sessions": {
+    "s_ce86ff44c4f78b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7c4f7b8a-5329-4b4f-a1bf-4acdfc002aae",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Logan May (Work) <loganwork@Logans-MacBook-Pro.local>"
+    }
+  }
+}

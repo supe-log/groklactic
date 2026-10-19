@@ -1,8 +1,8 @@
 {
   "orgId": "no-thought",
   "version": 1,
-  "createdAt": "2026-10-19T18:32:56-05:00",
-  "updatedAt": "2026-10-19T18:32:56-05:00",
+  "createdAt": "2026-10-19T18:43:44-05:00",
+  "updatedAt": "2026-10-19T18:43:44-05:00",
   "intake": {
     "businessName": "No Thought",
     "industry": "small_business",
@@ -181,7 +181,8 @@
       "rules": [
         "Any public post or TikTok publish -> founder_approval: tiktok_prepare_publish (draft mode) then founder submits; never tiktok_publish",
         "Any video generation or batch creative run -> founder_approval: Preflight get_cost, hand gen_spend",
-        "Any email blast, DM, ad spend, influencer offer, or discount -> founder_approval: Draft only"
+        "Any email blast, DM, ad spend, influencer offer, or discount -> founder_approval: Draft only",
+        "Any customer refund, return, exchange, custom order, discount, or complaint -> founder_approval: Answer product facts only; hold the rest as an approval card"
       ],
       "autonomy": "draft_only",
       "skills": [
@@ -199,6 +200,11 @@
           "name": "Content calendar check",
           "description": "Use on the weekly content check to list what's due this week, what assets are missing, and stage drafts.",
           "content": "---\nname: Content calendar check\ndescription: >-\n  Use on the weekly content check to list what's due this week, what assets are missing, and stage drafts.\n---\n# Content calendar check\nList this week's planned posts, the asset status of each (have / need Design Studio / need founder), and caption drafts. Send it to Brand Chief of Staff. If nothing is planned, send nothing.\n"
+        },
+        {
+          "name": "Customer reply",
+          "description": "Use when a customer asks about the product, fabric, sizing, drop date, shipping, or an order. Answers from the brand facts; refunds, returns, custom orders, discounts, and complaints are held for the founder.",
+          "content": "---\nname: Customer reply\ndescription: >-\n  Use when a customer asks about the product, fabric, sizing, drop date, shipping, or an order. Answers from the brand facts; refunds, returns, custom orders, discounts, and complaints are held for the founder.\n---\n# Customer reply\n**Brand facts (the only facts you may state; example data set by the founder):**\n- Hero product: the oatmeal No Thought hoodie with a small 'No Thought' chest wordmark.\n- Fabric: merino-back fleece (merino wool inside, natural-fiber face). Say exactly this; don't add sustainability claims (never greenwash).\n- Drop: preorder. Ships about 6 weeks after the preorder closes. Never promise a specific date.\n- Payments: checkout runs in Stripe test mode for now; nothing is charged in this demo.\n\n**Steps**\n1. Sort the message into parts: (a) product facts above, (b) anything else.\n2. Answer (a) right away, in 2 to 3 friendly sentences in the brand voice, using only the facts above. If a fact isn't listed, say \"Let me check with the founder\" instead of guessing.\n3. Hold (b) for the founder: refunds, returns, exchanges, custom or bulk orders, discounts, order changes, complaints, and anything about money. Tell the customer \"I've passed that to the founder, who'll get back to you.\" Send Brand Chief of Staff an approval card with the customer's question and a suggested reply. Never promise a refund.\n4. On email, Instagram DM, or Shopify messages, everything is a DraftExternalMessage card the founder sends. Never send it yourself.\n5. Log each reply in the shared runtime `approvals.jsonl` (question, what was answered, what was held), with no customer names or contact details.\n"
         }
       ],
       "routines": [

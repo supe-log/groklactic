@@ -60,7 +60,7 @@ ON_DEMAND = {
  "design-studio": [{"phrase": "Make three hoodie mockups", "runs": "product-mockups"}, {"phrase": "Write the tech pack", "runs": "tech-pack-outline"}],
  "vendor-scout": [{"phrase": "Find three vendors", "runs": "vendor-search"}],
  "outreach-and-negotiation": [{"phrase": "Draft the RFQ", "runs": "rfq-draft"}, {"phrase": "Counter this quote", "runs": "negotiation-playbook"}],
- "launch-growth": [{"phrase": "Plan the launch", "runs": "launch-plan"}, {"phrase": "Make a TikTok draft", "runs": "short-video-draft"}],
+ "launch-growth": [{"phrase": "Plan the launch", "runs": "launch-plan"}, {"phrase": "Make a TikTok draft", "runs": "short-video-draft"}, {"phrase": "Answer this customer", "runs": "customer-reply"}],
  "ops-retro": [{"phrase": "Run the retro now", "runs": "weekly-retro"}, {"phrase": "Update landed cost", "runs": "landed-cost"}],
 }
 
@@ -224,6 +224,24 @@ skill("launch-growth", "content-calendar-check", "Content calendar check",
 List this week's planned posts, the asset status of each (have / need Design Studio / need founder), and caption drafts. Send it to Brand Chief of Staff. If nothing is planned, send nothing.
 """)
 
+skill("launch-growth", "customer-reply", "Customer reply",
+"Use when a customer asks about the product, fabric, sizing, drop date, shipping, or an order. Answers from the brand facts; refunds, returns, custom orders, discounts, and complaints are held for the founder.",
+"""
+# Customer reply
+**Brand facts (the only facts you may state; example data set by the founder):**
+- Hero product: the oatmeal No Thought hoodie with a small 'No Thought' chest wordmark.
+- Fabric: merino-back fleece (merino wool inside, natural-fiber face). Say exactly this; don't add sustainability claims (never greenwash).
+- Drop: preorder. Ships about 6 weeks after the preorder closes. Never promise a specific date.
+- Payments: checkout runs in Stripe test mode for now; nothing is charged in this demo.
+
+**Steps**
+1. Sort the message into parts: (a) product facts above, (b) anything else.
+2. Answer (a) right away, in 2 to 3 friendly sentences in the brand voice, using only the facts above. If a fact isn't listed, say "Let me check with the founder" instead of guessing.
+3. Hold (b) for the founder: refunds, returns, exchanges, custom or bulk orders, discounts, order changes, complaints, and anything about money. Tell the customer "I've passed that to the founder, who'll get back to you." Send Brand Chief of Staff an approval card with the customer's question and a suggested reply. Never promise a refund.
+4. On email, Instagram DM, or Shopify messages, everything is a DraftExternalMessage card the founder sends. Never send it yourself.
+5. Log each reply in the shared runtime `approvals.jsonl` (question, what was answered, what was held), with no customer names or contact details.
+""")
+
 # ---- Ops & Retro
 skill("ops-retro", "samples-tracker", "Samples tracker",
 "Use to track sample requests, costs, shipping, arrival, and fit/wear-test notes.",
@@ -337,12 +355,13 @@ BOTS = [
  {"slug": "launch-growth", "name": "Launch & Growth", "title": "Launch & Growth Lead",
   "description": "Builds the waitlist, launch plan, and social calendar, makes Higgsfield ad/short videos (after spend approval), and stages TikTok posts only via prepare -> founder publishes.",
   "role_text": "You are Launch & Growth for {{brand_name}}. You plan the drop: waitlist, 4-week content calendar, community moments (local runs, tennis, gym), ambassador criteria, and launch-day checklist. You make short videos and ad creatives with Higgsfield only after the founder approves the credits, and you stage TikTok posts with `tiktok_prepare_publish` (default UPLOAD_TO_DRAFT). The founder submits the publish form; you never call `tiktok_publish`, never post, DM, email-blast, or buy ads.",
-  "skills": ["launch-plan", "short-video-draft", "content-calendar-check"],
+  "skills": ["launch-plan", "short-video-draft", "content-calendar-check", "customer-reply"],
   "plugins": [HIGGS(["balance", "generate_video", "jobs_wait", "tiktok_accounts", "tiktok_prepare_publish", "tiktok_publish_status", "upscale_video"]), GDRIVE, NOTION, GCAL, INSTAGRAM, SHOPIFY],
   "routines": [R("growth-weekly-content", "Weekly content check", "47 10 * * 1", "Run @Content calendar check for this week. Send to Brand Chief of Staff in Grok Bot; if nothing is planned, send nothing.", ["content-calendar-check"])],
   "approval_rules": [A("lg-a1", "Any public post or TikTok publish", "founder_approval", "tiktok_prepare_publish (draft mode) then founder submits; never tiktok_publish"),
                      A("lg-a2", "Any video generation or batch creative run", "founder_approval", "Preflight get_cost, hand gen_spend"),
-                     A("lg-a3", "Any email blast, DM, ad spend, influencer offer, or discount", "founder_approval", "Draft only")],
+                     A("lg-a3", "Any email blast, DM, ad spend, influencer offer, or discount", "founder_approval", "Draft only"),
+                     A("lg-a4", "Any customer refund, return, exchange, custom order, discount, or complaint", "founder_approval", "Answer product facts only; hold the rest as an approval card")],
   "handoffs": [{"to": "design-studio", "when": "Need stills/creatives", "payload": "brief"},
                {"to": "brand-chief-of-staff", "when": "Drafts or spend approval", "payload": "card/ref"}]},
  {"slug": "ops-retro", "name": "Ops & Retro", "title": "Operations & Retro Lead",

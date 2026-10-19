@@ -1,0 +1,18 @@
+README.md
+  h_cb88e130246132 11
+TEAM.md
+  h_cb88e130246132 13-14
+bot-team/setup-chief-of-staff/skills/getting-started/SKILL.md
+  h_cb88e130246132 5-7,11,14,17-29,31-34,36-38,40-46,48-50,52-54,56-63,65-67,69-70,72,75,78
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "d9e14ef8a3970c9068dfb4c502c59f703f684ab1",
+  "prompts": {},
+  "humans": {
+    "h_cb88e130246132": {
+      "author": "Logan May (Work) <loganwork@Logans-MacBook-Pro.local>"
+    }
+  }
+}

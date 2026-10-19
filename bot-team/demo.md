@@ -18,12 +18,12 @@
 | Palette | Limestone `#E8E2D6`, Clay, Bark, Soft Black (hero), accents ≤10% | `no-thought/brand-week1-draft.md` |
 | Existing No Thought bot team (pitch proof) | **No Thought GM, Brand, Product, Growth** bots run on Logan's account. The clothing pack is distilled from their work | agent profiles 0f26bc1a / 3b3f7a40 / 78942183 / 2b986e12 |
 | Hero product: **natural-fabric hoodie, oatmeal, small "No Thought" chest wordmark** | Not in the v0 SKU table (closest is the W1 warm-up layer). Fabric candidates come from Product's research, e.g. **Pontetorto Tecnowool merino-back fleece** or organic-cotton fleece. GSM and blend are ASSUMPTION | `fabric-shortlist-v0.md` §6, `fabric-research-v0.md` |
-| Higgsfield test (Chief of Staff, 6:28 PM CT) | **<30 s, 0.25 credits, model `gpt_image_2_5`, 1:1.** Mockup at `/workspace/groklactic/clothing/mockup-hoodie-01.png` (copied to `fallback/04-hoodie-mockup.png`). Skill flow: `balance` → `get_cost` (held if over cap) → `generate_image` → `jobs_wait` | CoS steering |
+| Higgsfield test (Chief of Staff, 6:28 PM CT) | **<30 s, 0.25 credits, model `gpt_image_2_5`, 1:1.** Mockup at `clothing/mockup-hoodie-01.png` (copied to `fallback/04-hoodie-mockup.png`). Skill flow: `balance` → `get_cost` (held if over cap) → `generate_image` → `jobs_wait` | CoS steering |
 | eye-of-grok app on Logan's Mac: **http://localhost:3010** | Intake (with industry picker), plan endpoint and feedback endpoint are being built by Claude Code, uncommitted. The Setup Architect assumes **On main (checked on GitHub 6:31 PM CT):** intake at `/start`, team at `/u/[orgId]/team`, `GET /api/orgs/[id]/plan` (`?format=recipes` or `?format=prompt`, 404 `plan_not_found` until intake is submitted), `/api/orgs/[id]/feedback`, `/api/orgs/[id]/retro`. Setup skill still assumes `/api/plan?business_id=`, so it must be updated or it falls back to local JSON | kickoff, `groklactic/README.md` |
 | Map ingest `POST /api/local/snapshot` (loopback), 2.5 s redraw, reset `GET /api/orgs/mine?reset=1` | **Built** on eye-of-grok `main` | eye-of-grok README / LOCAL.md |
 | Install link `grokbot://app/v1/bot-template?id=<share id>` | Format confirmed. **Share id `[TODO: confirm]`** | kickoff |
-| Setup CoS trigger **"Build my team"**; retro trigger **"Run the retro now"** | Confirmed in `setup-chief-of-staff/template.md` / `README.md` (insurance package). The setup skill fetches from :3010 and **falls back to local JSON** | Setup Architect files |
-| Insurance package (proof the generator works for any business) | **Built:** `insurance-team.json`. Roster: Agency Chief of Staff, Intake & Inbox, Renewals & Follow-ups, COI Desk, Quote Prep, Compliance & Ops | `/workspace/groklactic/` |
+| Setup CoS trigger **"Build my team"**; retro trigger **"Run the retro now"** | Confirmed in `setup-cos-template.md` / `README.md` (insurance package). The setup skill fetches from :3010 and **falls back to local JSON** | Setup Architect files |
+| Insurance package (proof the generator works for any business) | **Built:** `insurance-team.json`. Roster: Agency Chief of Staff, Intake & Inbox, Renewals & Follow-ups, COI Desk, Quote Prep, Compliance & Ops | `` |
 | `clothing-team.json` | **Not on disk at 6:45 PM CT** (due 7:05). Names below follow the GM's final list | GM override |
 | Repos | github.com/supe-log/eye-of-grok (Sep 19 hackathon code + a docs branch today); github.com/supe-log/groklactic (**empty**) | GitHub |
 
@@ -127,10 +127,10 @@ Pre-opened: tab 1 is `localhost:3010/start`, tab 2 is `/u/demo-insurance-agency/
 | 1:50–2:10 | **6. RFQ held for approval (Track 3)** | **Outreach & Negotiation**: `Draft an RFQ to #4 for the hoodie` | RFQ draft with **"Held for founder approval"** | "It writes the RFQ in Logan's voice and stops. A one-person company with a team that can't send, spend or sign without the founder. That's Track 3." |
 | 2:10–2:20 | **7. Thumbs-down** | Back in tab 1 (`/u/no-thought/team`), **Step 2 · Rate the work**: 👎 on the **Outreach & Negotiation** card, comment `Ask for the minimum order quantity up front.` | Feedback saved (`POST /api/orgs/no-thought/feedback`, Bearer token) | "Logan coaches it like a new hire. One thumb, one sentence. Second time this week, so now it's a pattern." |
 | 2:20–2:35 | **8. Retro** | **Ops & Retro**: `Run the retro now` (calls `POST /api/orgs/no-thought/retro`). Backup: click **Run retro (1 new feedback)** on the team page | Proposal: **add a rule** to Outreach & Negotiation ("ask for MOQ up front"), **awaiting founder approval** in `/api/orgs/no-thought/changes`; approve, then Chief of Staff marks it applied | "The retro turns feedback into a fix, and even the fix waits for Logan. The team gets better every week." |
-| 2:35–2:55 | **Insurance swap** | Tab 2: `/u/pecan-street-insurance-group/team` if Claude Code serves `data-seed/pecan-street-insurance-group.plan.json` (our 6 bots); otherwise `/u/demo-insurance-agency/team` (the **See a demo agency** button, app-generated roster). Check which at 7:10. Don't re-submit live | Agency Chief of Staff, Intake & Inbox, Renewals & Follow-ups, COI Desk, Quote Prep, Compliance & Ops | "Same generator, any business. Here's an insurance agency: COI desk, renewals, quotes, all founder-approved." |
+| 2:35–2:55 | **Customer answered (Track 3)** | **Launch & Growth**: Isaac (as the customer) asks: `Is the hoodie merino? When does it ship? Can I get a refund if it doesn't fit?` | Facts answered from the brand pack; the refund part is **held for founder approval** | "Logan closes his laptop and customers still get answers. Facts go out, anything with money in it waits for him." |
 | 2:55–3:00 | Close | Map | — | "One intake. One click. One founder in control. That's Groklactic." |
 
-**Cut rules:** if the render isn't done at 1:40, Jeff shows `04-hoodie-mockup.png` ("here's the one from rehearsal") and Logan reveals the live one later if it lands. At 2:20, skip straight to the retro. At 2:40, skip the insurance swap and say the line over the map.
+**Cut rules:** if the render isn't done at 1:40, Jeff shows `04-hoodie-mockup.png` ("here's the one from rehearsal") and Logan reveals the live one later if it lands. At 2:20, skip straight to the retro. At 2:40, cut the customer beat to one question and close. Insurance swap is dropped (GM, 6:40); if a judge asks, say "same generator, any business, insurance agency pack is in the repo."
 
 ---
 
@@ -188,7 +188,7 @@ Say the Grok Bot features out loud: **bot templates, skills, Higgsfield plugin, 
 | Wifi | Hangs | — | Phone hotspot (pre-paired). :3010 is local |
 | Mac dies | — | — | `clip-full-run.mov` on Jeff's laptop, Isaac narrates |
 
-### Shot list: save to `/workspace/groklactic/fallback/`, capture during the **7:10 dry run** through 7:55
+### Shot list: save to `fallback/`, capture during the **7:10 dry run** through 7:55
 1. `01-intake-clothing.png`: picker on Clothing, fields filled
 2. `02-plan-clothing.png`: generated plan
 3. `03-map-clothing.png`: map with Logan, Brand Chief of Staff and 5 bots
@@ -236,6 +236,15 @@ Reset and lock (8:22–8:25):
 ---
 
 ## 5. Open risks and TODOs
+
+**On stage, run the production build** (`npm run build && npm start -- -p 3010`) so the Next.js "Issues" badge doesn't show. Backup video: `fallback/eye-of-grok-demo.mp4` (insurance intake → 6 bots → 2 👎 → retro → approve → plan v2, 38 s).
+
+
+**GM 6:41 PM CT:** cutoff is **7:10**. If the app isn't showing the six No Thought bots by then, dry-run and demo with **insurance** (`demo-insurance.md`, working now); clothing becomes the bonus Higgsfield beat. The customer beat stays either way (Isaac plays the customer). Rehearse on a throwaway id, never `no-thought` (reset doesn't clear feedback). `TEAM.md` in the repo is the one task file; `ISAAC-TEST.md` is an optional scorecard for Isaac's cold run.
+
+
+**Added 6:40 PM CT (GM):** (a) a 10-second **customer-reply beat** in Launch & Growth: a customer DM about hoodie sizing and drop date gets a reply drafted and held for founder approval (Track 3, "company still answering customers"). It slots right after the RFQ beat; the insurance swap is the first cut if time runs short. (b) Before judging, **turn on one routine** (morning brief) live for Grok Bot use. (c) Adapter plugin is optional.
+
 
 **Retro (GM final, 6:36 PM CT):** code stays at `RULE_AFTER_DOWNS = 2`. Right after `?reset=1`, Jeff posts the first 👎 from Logan's Mac with Setup Architect's command (no retro run):
 

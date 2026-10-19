@@ -10,7 +10,8 @@ All times are CT. Build stops at 8:30, when judges come around for about 5 minut
 
 **Isaac (narrator and Track 2 tester)**
 Isaac tests on **his own Grok Bot**, which has never seen the product. That's the Track 2 proof.
-1. Start a brand-new Grok Bot. Paste in only this: "Read https://github.com/supe-log/groklactic (branch bot-team), install the Setup Chief of Staff from `bot-team/setup-cos-template.md`, then say Build my team for the business No Thought."
+1. Start a brand-new Grok Bot. Either install the **Setup Chief of Staff** template from its share link (posted in the team chat once Logan publishes it) and say "Build my team (dry run) for No Thought", or paste in only this:
+   "Clone https://github.com/supe-log/groklactic (branch bot-team). Read `bot-team/setup-chief-of-staff/template.md`, then follow `bot-team/setup-chief-of-staff/skills/getting-started/SKILL.md` exactly as a dry run for orgId no-thought. Create nothing; send nothing. Show me the build receipt."
 2. Log every step that needs a human, and every error, in the team chat. Report by 7:25.
 3. Learn the narration in `bot-team/demo.md`, including the line "Second time this week, so now it's a pattern."
 

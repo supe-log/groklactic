@@ -1,0 +1,16 @@
+ISAAC-TEST.md
+  h_cb88e130246132 1-18
+TEAM.md
+  h_cb88e130246132 47-49
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "87d1fd64e3a78de5352965366a419e24922c94c4",
+  "prompts": {},
+  "humans": {
+    "h_cb88e130246132": {
+      "author": "Logan May (Work) <loganwork@Logans-MacBook-Pro.local>"
+    }
+  }
+}

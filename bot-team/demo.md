@@ -13,7 +13,7 @@
 
 | Thing | Status | Source |
 |---|---|---|
-| **No Thought** (real brand, founder Logan May, Austin) | Premium DTC athleisure in natural-forward fabrics (merino, TENCEL lyocell, performance linen blends, organic cotton; elastane only where needed; "never greenwash"). Run, tennis and gym. Bandit-level fashion taste, quiet logos, "tempo → coffee" wearability | `/workspace/no-thought/business-brief.md`, No Thought GM profile |
+| **No Thought** (real brand, founder Logan May, Austin) | Premium DTC athleisure in natural-forward fabrics (merino, TENCEL lyocell, performance linen blends, organic cotton; elastane only where needed; "never greenwash"). Run, tennis and gym. Bandit-level fashion taste, quiet logos, "tempo → coffee" wearability | `verticals/clothing-brand/examples/no-thought.brand-profile.json` |
 | Target customer | Austin runners, tennis players and gym-goers who are natural-fiber curious, have quiet style and are "coffee-after people". Community-first: waitlist, then hyperlocal run clubs and pop-ups, then limited drops | `no-thought-growth/austin-community-plan.md`, business brief |
 | Palette | Limestone `#E8E2D6`, Clay, Bark, Soft Black (hero), accents ≤10% | `no-thought/brand-week1-draft.md` |
 | Existing No Thought bot team (pitch proof) | **No Thought GM, Brand, Product, Growth** bots run on Logan's account. The clothing pack is distilled from their work | agent profiles 0f26bc1a / 3b3f7a40 / 78942183 / 2b986e12 |
@@ -47,7 +47,7 @@
 |---|---|---|
 | **Logan May** | **Driver** (and the real founder on screen) | His Mac, Grok Bot login and localhost:3010. Makes every click. Approves and thumbs as the founder. Answers technical Q&A |
 | **Isaac Jaramillo** | **Narrator** | Gives the pitch and the talk track below, plus non-technical Q&A |
-| **Jeff Pape** | **Fallback operator + timekeeper** | Second laptop with `fallback/` open in order. Signals 1:00 / 2:00 / 2:40. Calls "switch" after a 10 s stall |
+| **Isaac Jaramillo** | **Narrator, customer + timekeeper** | Signals 1:00 / 2:00 / 2:40 and calls "switch" after a 10 s stall. Logan switches to the `fallback/` tab on his own Mac |
 
 **Prior-work line (Q&A):** "The map is eye-of-grok from our Sep 19 hackathon. Tonight we built the intake → plan → one-click install → approval → retro loop and the clothing and insurance packs."
 
@@ -130,7 +130,7 @@ Pre-opened: tab 1 is `localhost:3010/start`, tab 2 is `/u/demo-insurance-agency/
 | 2:35–2:55 | **Customer answered (Track 3)** | **Launch & Growth**: Isaac (as the customer) asks: `Is the hoodie merino? When does it ship? Can I get a refund if it doesn't fit?` | Facts answered from the brand pack; the refund part is **held for founder approval** | "Logan closes his laptop and customers still get answers. Facts go out, anything with money in it waits for him." |
 | 2:55–3:00 | Close | Map | — | "One intake. One click. One founder in control. That's Groklactic." |
 
-**Cut rules:** if the render isn't done at 1:40, Jeff shows `04-hoodie-mockup.png` ("here's the one from rehearsal") and Logan reveals the live one later if it lands. At 2:20, skip straight to the retro. At 2:40, cut the customer beat to one question and close. Insurance swap is dropped (GM, 6:40); if a judge asks, say "same generator, any business, insurance agency pack is in the repo."
+**Cut rules:** if the render isn't done at 1:40, Logan opens `fallback/04-hoodie-mockup.png` ("here's the one from rehearsal") and Logan reveals the live one later if it lands. At 2:20, skip straight to the retro. At 2:40, cut the customer beat to one question and close. Insurance swap is dropped (GM, 6:40); if a judge asks, say "same generator, any business, insurance agency pack is in the repo."
 
 ---
 
@@ -174,7 +174,7 @@ Say the Grok Bot features out loud: **bot templates, skills, Higgsfield plugin, 
 
 ## 4. Fallback plan
 
-| Beat | What can fail | Spot it | Switch (Jeff) |
+| Beat | What can fail | Spot it | Switch (Logan, Isaac calls it) |
 |---|---|---|---|
 | 1 Intake | :3010 down, picker missing, plan endpoint errors | Spinner >5 s | `01-intake-clothing.png`, then `02-plan-clothing.png` |
 | 2 Map | No redraw, old fixture | No Outreach node after 5 s | `03-map-clothing.png` |
@@ -186,7 +186,7 @@ Say the Grok Bot features out loud: **bot templates, skills, Higgsfield plugin, 
 | 8 Retro | Slow, generic, or can't find feedback | No diff after 20 s | `11-retro-diff.png` |
 | Insurance | Picker or plan fails | — | `12-insurance-map.png` |
 | Wifi | Hangs | — | Phone hotspot (pre-paired). :3010 is local |
-| Mac dies | — | — | `clip-full-run.mov` on Jeff's laptop, Isaac narrates |
+| Mac dies | — | — | `fallback/eye-of-grok-demo.mp4` on Isaac's laptop, Isaac narrates |
 
 ### Shot list: save to `fallback/`, capture during the **7:10 dry run** through 7:55
 1. `01-intake-clothing.png`: picker on Clothing, fields filled
@@ -202,7 +202,7 @@ Say the Grok Bot features out loud: **bot templates, skills, Higgsfield plugin, 
 11. `10-thumbs-moq.png`: 👎 + MOQ comment
 12. `11-retro-diff.png`: retro diff to the RFQ skill, awaiting approval
 13. `12-insurance-map.png`: insurance roster on the map
-14. `clip-full-run.mov`: 3:00 recording of one clean run (Jeff, 7:40–7:55)
+14. `clip-full-run.mov`: 3:00 recording of one clean run (Chief of Staff, 7:40–7:55)
 
 ### Timeline and pre-flight (CT)
 | Time | What |
@@ -211,7 +211,7 @@ Say the Grok Bot features out loud: **bot templates, skills, Higgsfield plugin, 
 | **7:10** | **Dry run #1** on Logan's Mac. Capture shots 01–12 as it goes. Log stalls |
 | 7:25–7:40 | Fix order and inputs; Claude Code fixes only blockers |
 | by **7:45** | **Push** the safe files to supe-log/groklactic (per Setup Architect's list; no `.venv/`, `runtime/`, `.env*`, `~/.grokbot`, `grok-bot-app/`, tokens) |
-| 7:40–7:55 | Jeff records `clip-full-run.mov` and fills missing shots |
+| 7:40–7:55 | Chief of Staff records `clip-full-run.mov` and fills missing shots |
 | **8:00** | **CODE FREEZE** |
 | 8:00–8:10 | Rehearsal #1 (timed 3:00 + pitch) |
 | 8:10–8:15 | Fix talk track/tabs only. **Pre-run the Vendor Scout shortlist** so the thread is ready |
@@ -226,7 +226,7 @@ Reset and lock (8:22–8:25):
 - [ ] Tabs: intake (pre-filled, Clothing picked), `/u/mine`, spare. Grok Bot open: Setup CoS link, Design Studio, Vendor Scout (pre-run thread), Outreach & Negotiation, Ops & Retro
 - [ ] Higgsfield balance checked (≥1 credit). Cap set. Stripe **test mode**
 - [ ] Prompts in Notes in order: Design Studio prompt, RFQ ask, MOQ comment, "Run the retro now"
-- [ ] Wifi + **phone hotspot tested**. Jeff's laptop: `fallback/` slideshow + clip queued. Timer ready
+- [ ] Wifi + **phone hotspot tested**. Logan's Mac: `fallback/` tab + `eye-of-grok-demo.mp4` queued; Isaac has a copy. Timer ready
 
 ### 30-second version
 1. (0–10 s) Isaac: "Groklactic builds a founder-approved Grok Bot team in one click. Here's Logan's real brand, No Thought." Show the map (or `03-map-clothing.png`).
@@ -246,7 +246,7 @@ Reset and lock (8:22–8:25):
 **Added 6:40 PM CT (GM):** (a) a 10-second **customer-reply beat** in Launch & Growth: a customer DM about hoodie sizing and drop date gets a reply drafted and held for founder approval (Track 3, "company still answering customers"). It slots right after the RFQ beat; the insurance swap is the first cut if time runs short. (b) Before judging, **turn on one routine** (morning brief) live for Grok Bot use. (c) Adapter plugin is optional.
 
 
-**Retro (GM final, 6:36 PM CT):** code stays at `RULE_AFTER_DOWNS = 2`. Right after `?reset=1`, Jeff posts the first 👎 from Logan's Mac with Setup Architect's command (no retro run):
+**Retro (GM final, 6:36 PM CT):** code stays at `RULE_AFTER_DOWNS = 2`. Right after `?reset=1`, Chief of Staff posts the first 👎 from Logan's Mac with Setup Architect's command (no retro run):
 
 ```
 curl -X POST http://localhost:3010/api/orgs/no-thought/feedback -H "Authorization: Bearer $EYE_OF_GROK_INGEST_TOKEN" -H "Content-Type: application/json" -d '{"botId":"outreach-and-negotiation","rating":"down","tag":"missing","comment":"ask for the minimum order quantity up front","source":"owner"}'

@@ -1,0 +1,7 @@
+{
+  "description": "Registry the Setup Chief of Staff uses to pick a vertical by business_id or industry when eye-of-grok is unreachable.",
+  "verticals": [
+    {"vertical": "insurance", "business_id": "pecan-street-insurance-group", "industry": "independent_insurance_agency", "aliases": ["insurance", "insurance agency", "independent agency"], "plan_file": "plan/insurance-agency.plan.json", "team_file": "insurance-team.json", "intake_file": "intake/insurance-agency.intake.json"},
+    {"vertical": "clothing-brand", "business_id": "no-thought", "industry": "apparel_dtc_clothing_brand", "aliases": ["clothing brand", "apparel", "fashion", "athleisure", "start a clothing brand"], "plan_file": "verticals/clothing-brand/plan/clothing-brand.plan.json", "team_file": "clothing-team.json", "intake_file": "verticals/clothing-brand/intake/clothing-brand.intake.json"}
+  ]
+}

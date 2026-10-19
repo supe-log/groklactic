@@ -1,0 +1,11 @@
+.venv/
+runtime/
+.idea/
+grok-bot-app/
+.env*
+.env.local
+.vercel/
+data/
+node_modules/
+.next/
+__pycache__/

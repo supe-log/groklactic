@@ -1,0 +1,27 @@
+{
+  "service": "eye-of-grok",
+  "repo": "https://github.com/supe-log/eye-of-grok",
+  "contract_source": "Logan's Mac, eye-of-grok commit e4d57fc, src/lib/harness-types.ts (read 2026-10-19 6:31 PM CT). Not yet on GitHub main.",
+  "base_url_env": "EYE_OF_GROK_BASE_URL",
+  "default_base_url": "http://localhost:3010",
+  "auth": {"writes_header": "Authorization: Bearer $EYE_OF_GROK_INGEST_TOKEN", "token_env": "EYE_OF_GROK_INGEST_TOKEN", "note": "Reference the env var only; never hardcode or log the token. Reads need no token."},
+  "reachability": "localhost:3010 is the founder's Mac. The box cannot reach it: run curl on the founder's registered desktop (Shell with its machineId) or set EYE_OF_GROK_BASE_URL to a tunnel/public host.",
+  "org_id_rule": "orgId = plan business_id (pecan-street-insurance-group, no-thought)",
+  "endpoints": {
+    "start": {"method": "POST", "path": "/api/start", "auth": true,
+      "body": {"orgId": "string (optional)", "intake": {"businessName": "string", "industry": "insurance_agency | small_business", "teamSize": "int", "tools": "string[]", "painPoints": "string", "rules": "string"}},
+      "response": {"orgId": "string", "version": "int", "bots": "Bot[]", "groups": "Group[]", "teamUrl": "url", "mapUrl": "url", "planUrl": "url", "setupPrompt": "string"}},
+    "plan": {"method": "GET", "path": "/api/orgs/{orgId}/plan", "query": {"format": "(omit) TeamPlan JSON | recipes | prompt"}, "response": "TeamPlan (see exports/teamplan.schema.json)"},
+    "feedback_list": {"method": "GET", "path": "/api/orgs/{orgId}/feedback"},
+    "feedback_post": {"method": "POST", "path": "/api/orgs/{orgId}/feedback", "auth": true, "body": {"botId": "string (optional, = bot slug)", "rating": "up | down", "tag": "great | wrong | slow | too_risky | missing (optional)", "comment": "string (no PII)", "source": "owner | bot"}},
+    "retro": {"method": "POST", "path": "/api/orgs/{orgId}/retro", "auth": true, "response": {"created": "int", "proposals": [{"id": "string", "kind": "add_rule | lower_autonomy | raise_autonomy | add_bot", "botId": "string", "title": "string", "why": "string", "change": "string", "addsPowers": "boolean", "status": "open | approved | rejected | applied"}]}},
+    "changes_list": {"method": "GET", "path": "/api/orgs/{orgId}/changes", "query": {"status": "open"}},
+    "change_decide": {"method": "POST", "path": "/api/orgs/{orgId}/changes/{changeId}", "auth": true, "body": {"decision": "approved | rejected"}, "note": "Only after the founder explicitly decides in chat."},
+    "change_applied": {"method": "POST", "path": "/api/orgs/{orgId}/changes/{changeId}/applied", "auth": true, "note": "Chief of Staff confirms the change is live in Grok Bot (after UpdateAgent/UpdateSkill)."},
+    "team": {"method": "GET", "path": "/api/orgs/{orgId}/team", "response": "console state"},
+    "org_snapshot_push_on_main": {"method": "POST", "path": "/api/orgs/{orgId}/snapshot", "auth": true, "loopback_alternative": "POST /api/local/snapshot", "status": "on GitHub main (org map)"}
+  },
+  "industry_mapping": {"independent_insurance_agency": "insurance_agency", "apparel_dtc_clothing_brand": "small_business"},
+  "local_fallback": {"registry": "/workspace/groklactic/verticals/index.json", "teamplan_exports": "/workspace/groklactic/exports/{orgId}.teamplan.json (insurance export is exports/insurance.teamplan.json)", "feedback_log": "/workspace/groklactic/runtime[/<vertical>]/feedback.jsonl"},
+  "timeouts_seconds": {"connect": 3, "total": 10}
+}

@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0.0",
+  "business_id": "no-thought",
+  "example_data": true,
+  "example_data_notice": "Example customer is the founder's real brand No Thought. Brand facts come from the No Thought GM/Brand/Product/Growth bot briefs on the shared box. Volumes, targets, and budgets are EXAMPLE assumptions. No personal PII.",
+  "baseline_source": "No Thought GM, No Thought Brand, No Thought Product, No Thought Growth agent briefs (/home/box/agent-data/agents/*/profile.json)",
+  "business": {
+    "display_name": "No Thought",
+    "industry": "apparel_dtc_clothing_brand",
+    "location": {"city": "Austin", "region": "TX", "country": "US"},
+    "timezone": "America/Chicago",
+    "business_hours": {"days": "Mon-Fri", "start": "08:00", "end": "18:00"},
+    "team_size": 2,
+    "roles": [{"role": "founder", "count": 1}, {"role": "part-time contractor (content/ops)", "count": 1}],
+    "lines_of_business": ["natural-fabric athleisure: run, tennis, gym", "premium DTC"]
+  },
+  "founder": {"display_name": "{{founder_name}}", "preferred_channel": "grok_bot_chat"},
+  "brand": {
+    "aesthetic": "minimalist cool, quiet logos, earth palette, runway/architecture mood boards (not clinical sportswear)",
+    "fabrics": ["merino", "Tencel/lyocell", "performance linen blends", "organic cotton + elastane where needed"],
+    "positioning": "contemporary fashion + natural fibers + multi-sport; never greenwash",
+    "hero_product": "natural-fabric hoodie",
+    "hero_product_detail": "oatmeal natural-fabric hoodie with a small 'No Thought' chest wordmark",
+    "wordmark": "No Thought"
+  },
+  "tools": {
+    "creative": "Higgsfield (connected; namespace user-Higgsfield)",
+    "email": "Gmail (connected)",
+    "files": "Google Drive (connected)",
+    "calendar": "Google Calendar (connected)",
+    "workspace": "Notion (connected)",
+    "social": "TikTok via Higgsfield tiktok_prepare_publish; Instagram manual",
+    "payments": "Stripe (TEST MODE ONLY)",
+    "storefront": "TBD (example: Shopify)"
+  },
+  "pain_points": [
+    {"id": "c1", "area": "design", "description": "No designer on staff; needs fast mockups and colorways before paying for samples."},
+    {"id": "c2", "area": "sourcing", "description": "Hard to find small-MOQ cut-and-sew partners for natural fabrics with real certifications."},
+    {"id": "c3", "area": "outreach", "description": "RFQs and follow-ups pile up; negotiation is ad hoc."},
+    {"id": "c4", "area": "launch", "description": "Needs a waitlist and steady content without spending founder hours."},
+    {"id": "c5", "area": "ops", "description": "No clear landed cost per SKU; samples lost track of."}
+  ],
+  "rules": {
+    "client_messages": "draft_only_founder_approves",
+    "vendor_messages": "draft_only_founder_approves",
+    "commitments": "no_price_moq_deposit_po_or_contract_without_founder",
+    "spend_cap_usd": "500",
+    "higgsfield_credit_cap_per_run": "50",
+    "publishing": "founder_submits_every_post",
+    "payments": "stripe_test_mode_only",
+    "ip": "original_designs_only_no_other_brand_marks",
+    "deletes": "never",
+    "routines_start_paused": true
+  },
+  "parameters": {"target_units_first_drop": 150, "target_fob_usd": 28, "target_retail_usd": 128, "target_moq": 100, "target_lead_days": 45, "followup_after_days": 4, "spend_cap_usd": 500, "credit_cap_per_run": 50},
+  "goals": ["3 hero-hoodie mockups this week", "3 sourced vendor candidates with URLs", "First RFQ approved and sent by the founder", "Waitlist live before samples arrive"]
+}

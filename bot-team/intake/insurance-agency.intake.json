@@ -1,0 +1,122 @@
+{
+  "schema_version": "1.0.0",
+  "business_id": "pecan-street-insurance-group",
+  "example_data": true,
+  "example_data_notice": "FICTIONAL EXAMPLE DATA for the Groklactic hackathon demo. 'Dana' and 'Pecan Street Insurance Group' are an invented persona and business, not real. Contact fields use reserved .example.com addresses.",
+  "business": {
+    "display_name": "Pecan Street Insurance Group (fictional)",
+    "industry": "independent_insurance_agency",
+    "location": {
+      "city": "Austin",
+      "region": "TX",
+      "country": "US"
+    },
+    "timezone": "America/Chicago",
+    "business_hours": {
+      "days": "Mon-Fri",
+      "start": "08:00",
+      "end": "17:30"
+    },
+    "team_size": 5,
+    "roles": [
+      {
+        "role": "founder / principal agent",
+        "count": 1,
+        "licensed": true
+      },
+      {
+        "role": "licensed producer",
+        "count": 1,
+        "licensed": true
+      },
+      {
+        "role": "customer service rep (CSR)",
+        "count": 2,
+        "licensed": true
+      },
+      {
+        "role": "office admin",
+        "count": 1,
+        "licensed": false
+      }
+    ],
+    "lines_of_business": [
+      "personal auto",
+      "homeowners",
+      "small commercial (GL, BOP, commercial auto, workers comp)"
+    ],
+    "carrier_count_estimate": 12
+  },
+  "founder": {
+    "display_name": "Dana (fictional owner-agent)",
+    "contact_email": "dana@pecanstreet-ins.example.com",
+    "preferred_channel": "grok_bot_chat"
+  },
+  "tools": {
+    "email": "Gmail (Google Workspace)",
+    "calendar": "Google Calendar",
+    "files": "Google Drive",
+    "knowledge_base": "Notion (optional)",
+    "ams": "Applied Epic / HawkSoft / EZLynx class AMS (example; no connector - browser or export)",
+    "e_signature": "DocuSign (example)",
+    "scheduling": "Calendly (example)",
+    "payments": "Stripe (TEST MODE ONLY)",
+    "carrier_portals": "browser only",
+    "certificate_template": "ACORD 25 template in Google Drive"
+  },
+  "pain_points": [
+    {
+      "id": "p1",
+      "area": "certificates",
+      "description": "COI requests from contractors' GCs arrive all day and interrupt CSRs; same-day turnaround expected.",
+      "volume_estimate": "15-25 per week"
+    },
+    {
+      "id": "p2",
+      "area": "renewals",
+      "description": "Renewals slip past the 30-day touch; remarket decisions happen too late.",
+      "volume_estimate": "40-60 renewals per month"
+    },
+    {
+      "id": "p3",
+      "area": "inbox",
+      "description": "Shared inbox triage eats the first hour of every day.",
+      "volume_estimate": "80-120 emails per day"
+    },
+    {
+      "id": "p4",
+      "area": "quotes",
+      "description": "Quote intake is missing info half the time; packets are rebuilt by hand.",
+      "volume_estimate": "8-12 new quotes per week"
+    },
+    {
+      "id": "p5",
+      "area": "compliance",
+      "description": "E&O exposure from undocumented client conversations and missed CE/license dates.",
+      "volume_estimate": "ongoing"
+    }
+  ],
+  "rules": {
+    "client_messages": "draft_only_founder_approves",
+    "coverage_advice": "never_by_bot_route_to_licensed_agent",
+    "binding": "never_by_bot",
+    "payments": "stripe_test_mode_only",
+    "deletes": "never",
+    "pii_in_templates": "never_use_placeholders",
+    "logging": "eo_safe_append_only",
+    "routines_start_paused": true
+  },
+  "parameters": {
+    "coi_turnaround_hours": 4,
+    "renewal_window_days": 90,
+    "remarket_threshold_pct": 10,
+    "followup_after_days": 3,
+    "max_followups": 3
+  },
+  "goals": [
+    "Same-day COI drafts",
+    "Zero missed 30-day renewal touches",
+    "Inbox triaged by 9 AM CT",
+    "Every client-facing message approved by a licensed human"
+  ]
+}

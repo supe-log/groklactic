@@ -1,0 +1,14 @@
+bot-team/README.md
+  h_cb88e130246132 1,3,5-9,11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "e81aafdae6b4645c857f712ee6b007f42b95db75",
+  "prompts": {},
+  "humans": {
+    "h_cb88e130246132": {
+      "author": "Logan May (Work) <loganwork@Logans-MacBook-Pro.local>"
+    }
+  }
+}

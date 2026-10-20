@@ -1,0 +1,16 @@
+bot-team/merch-team-setup/dolce-and-grokbana.bot.json
+  h_cb88e130246132 9-10,12-14,17-36,43,45-46
+bot-team/merch-team-setup/skills/merch-team-setup/SKILL.md
+  h_cb88e130246132 13-23,50
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "4c55ad63ca52e25e98d1cf385262d3f3f1d6bf94",
+  "prompts": {},
+  "humans": {
+    "h_cb88e130246132": {
+      "author": "Logan May (Work) <loganwork@Logans-MacBook-Pro.local>"
+    }
+  }
+}

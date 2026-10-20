@@ -24,3 +24,7 @@ Skill names are prefixed `Clothing · ...` (insurance uses `Insurance · ...`) s
 **Higgsfield tool names** are checked by the validator against `config/higgsfield-tools.json` (a snapshot of the real `user-Higgsfield` catalog).
 
 **Seed feedback field names:** `examples/seed-feedback.jsonl` uses the local log shape (`bot`, `reason`). The eye-of-grok API expects `botId` and `comment` (`POST /api/orgs/{orgId}/feedback` with `{botId, rating, tag, comment, source}`), so map `bot -> botId` and `reason -> comment` when posting a seed line.
+
+## Worked examples
+- `examples/no-thought.brand-profile.json`: the founder's own brand.
+- `examples/galatiq/`: a cold run on the hackathon host, covering brand, mockups, vendors, quote request and purchase order (all drafts).

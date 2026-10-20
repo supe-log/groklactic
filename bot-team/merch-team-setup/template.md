@@ -21,4 +21,4 @@
 **Logistics:** Ops & Orders handles missed and late orders, shipping per customer, tracking and reships, all logged in `orders.csv`.
 
 ## Collaborating on this bot
-This folder is the source of truth. To change the bot's prompts, routines or setup flow, edit `skills/merch-team-setup/SKILL.md` in a pull request to `bot-team`. Installed bots pick up the change through their paused **Repo sync** routine, or when the owner says "update yourself from GitHub". The owner approves before anything is applied.
+This folder is the source of truth. To change the bot's prompts, routines or setup flow, edit `skills/merch-team-setup/SKILL.md` in a pull request to `dolce-grokbana`. Installed bots pick up the change through their paused **Repo sync** routine, or when the owner says "update yourself from GitHub". The owner approves before anything is applied.

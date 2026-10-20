@@ -6,41 +6,169 @@
     "description": "Install one bot and give it your company's website. It builds a team of 4 merch bots that designs, sources, quotes and sells your branded clothing. Nothing ships, sends or spends without your OK.",
     "getting_started_skill": "merch-team-setup",
     "skill_file": "bot-team/merch-team-setup/skills/merch-team-setup/SKILL.md",
-    "triggers": ["Build my team", "Set up merch for <site>", "update yourself from GitHub", "turn on <routine>"],
-    "source_of_truth": {"repo": "supe-log/groklactic", "branch": "dolce-grokbana", "folder": "bot-team/merch-team-setup/"},
-    "company_inbox": "claims merch-<brand>@mail.grokbot.com at setup; all outgoing mail is a draft",
-    "plugins": [{"name": "Adapter", "id": "70141458", "packed": true}, {"name": "Gmail or Outlook", "installed_at_build": true}, {"name": "Google Drive", "installed_at_build": true}, {"name": "Higgsfield", "installed_at_build": true}],
-    "routines": [{"name": "Repo sync", "cron": "3 9 * * *", "enabled": false, "does": "Checks for new commits to the repo folder and proposes updates to its own skill; applies only after owner yes"}],
-    "outputs": ["/workspace/merch/brand-profile.json", "/workspace/merch/orders.csv", "/workspace/merch/build-receipt.json"]
+    "triggers": [
+      "Build my team",
+      "Set up merch for <site>",
+      "update yourself from GitHub",
+      "turn on <routine>"
+    ],
+    "source_of_truth": {
+      "repo": "supe-log/groklactic",
+      "branch": "dolce-grokbana",
+      "folder": "bot-team/merch-team-setup/"
+    },
+    "company_inbox": "claims merch-<brand>@mail.grokbot.com at setup; all outgoing mail is a draft; address saved to memory only, never written into names, descriptions or skills",
+    "plugins": [
+      {
+        "name": "Adapter",
+        "id": "70141458",
+        "packed": true
+      },
+      {
+        "name": "Gmail or Outlook",
+        "installed_at_build": true
+      },
+      {
+        "name": "Google Drive",
+        "installed_at_build": true
+      },
+      {
+        "name": "Higgsfield",
+        "installed_at_build": true
+      }
+    ],
+    "routines": [
+      {
+        "name": "Repo sync",
+        "cron": "3 9 * * *",
+        "enabled": false,
+        "does": "Checks for new commits to the repo folder and proposes updates to its own skill; applies only after owner yes"
+      },
+      {
+        "name": "Daily merch brief",
+        "cron": "7 8 * * 1-5",
+        "when": "weekdays 8:07 AM CT",
+        "enabled": false
+      }
+    ],
+    "outputs": [
+      "/workspace/merch/brand-profile.json",
+      "/workspace/merch/orders.csv",
+      "/workspace/merch/build-receipt.json"
+    ],
+    "skills": [
+      "Merch · Brand brief",
+      "Merch · Rules"
+    ],
+    "single_front_door": "Owner talks only to Dolce & Grokbana. Sub-bots report and send approval asks to it via SendToAgent, never to the owner. It owns the approval queue ('What's waiting on me?'), the Daily merch brief, and collects retro proposals.",
+    "idempotent_setup": "Before building, check memory, build-receipt.json and teammates; reuse existing bots (incl. numbered or '(copy)' names) and never create duplicates.",
+    "inbox_ownership": {
+      "customer mail": "Customer replies (Ops & Orders)",
+      "vendor mail": "Vendor thread check (Outreach & Negotiation)",
+      "rule": "exactly one routine per mail type; never add a second poller on the same inbox"
+    }
   },
   "sub_bots": [
-    {"name": "Brand & Design", "title": "Brand & Design Lead",
-     "does": "Keeps the brand profile and approval queue; mood boards, mockups (tee, hoodie, cap, stickers) in the brand palette; tech-pack outlines",
-     "skills": ["Merch · Brand brief", "Merch · Mockups"],
-     "routines": [{"name": "Daily merch brief", "cron": "7 8 * * 1-5", "when": "weekdays 8:07 AM CT", "enabled": false}],
-     "needs_owner": ["every image generation", "public logo use"]},
-    {"name": "Vendor Scout", "title": "Sourcing Researcher",
-     "does": "Finds local and online print shops (screen, DTF, embroidery); compares unit price at 25/50/100, setup fees, turnaround, minimums, reviews, with links",
-     "skills": ["Merch · Vendor comparison"],
-     "routines": [{"name": "Vendor refresh", "cron": "17 10 * * 3", "when": "Wednesdays 10:17 AM CT", "enabled": false}],
-     "needs_owner": ["never contacts vendors"]},
-    {"name": "Outreach & Negotiation", "title": "Vendor Outreach",
-     "does": "Drafts quote requests and counteroffers using online prices as leverage; tracks vendor threads",
-     "skills": ["Merch · Quote request", "Merch · Negotiation playbook"],
-     "routines": [{"name": "Vendor thread check", "cron": "12 11 * * 1-5", "when": "weekdays 11:12 AM CT", "enabled": false}],
-     "needs_owner": ["every vendor message (draft card)", "new vendors"]},
-    {"name": "Ops & Orders", "title": "Operations & Customer Lead",
-     "does": "Purchase orders with landed cost and timeline; samples; logistics (order list, missed/late orders, addresses, labels, tracking, delays, reships) in orders.csv; customer replies; Friday retro that opens a GitHub PR for owner merge",
-     "skills": ["Merch · Purchase order", "Merch · Customer reply", "Merch · Weekly retro"],
-     "routines": [{"name": "Customer replies", "trigger": "new mail in the company inbox", "enabled": false}, {"name": "Weekly retro", "cron": "17 16 * * 5", "when": "Fridays 4:17 PM CT", "enabled": false}],
-     "needs_owner": ["refunds, discounts, credits", "every customer reply (draft)", "any spend", "merging retro PRs"]}
+    {
+      "name": "Brand & Design",
+      "title": "Brand & Design Lead",
+      "does": "Keeps the brand profile and approval queue; mood boards, mockups (tee, hoodie, cap, stickers) in the brand palette; tech-pack outlines",
+      "skills": [
+        "Merch · Mockups"
+      ],
+      "routines": [],
+      "needs_owner": [
+        "every image generation",
+        "public logo use"
+      ],
+      "reports_to": "Dolce & Grokbana"
+    },
+    {
+      "name": "Vendor Scout",
+      "title": "Sourcing Researcher",
+      "does": "Finds local and online print shops (screen, DTF, embroidery); compares unit price at 25/50/100, setup fees, turnaround, minimums, reviews, with links",
+      "skills": [
+        "Merch · Vendor comparison"
+      ],
+      "routines": [
+        {
+          "name": "Vendor refresh",
+          "cron": "17 10 * * 3",
+          "when": "Wednesdays 10:17 AM CT",
+          "enabled": false
+        }
+      ],
+      "needs_owner": [
+        "never contacts vendors"
+      ],
+      "reports_to": "Dolce & Grokbana"
+    },
+    {
+      "name": "Outreach & Negotiation",
+      "title": "Vendor Outreach",
+      "does": "Drafts quote requests and counteroffers using online prices as leverage; tracks vendor threads",
+      "skills": [
+        "Merch · Quote request",
+        "Merch · Negotiation playbook"
+      ],
+      "routines": [
+        {
+          "name": "Vendor thread check",
+          "cron": "12 11 * * 1-5",
+          "when": "weekdays 11:12 AM CT",
+          "enabled": false
+        }
+      ],
+      "needs_owner": [
+        "every vendor message (draft card)",
+        "new vendors"
+      ],
+      "reports_to": "Dolce & Grokbana"
+    },
+    {
+      "name": "Ops & Orders",
+      "title": "Operations & Customer Lead",
+      "does": "Purchase orders with landed cost and timeline; samples; logistics (order list, missed/late orders, addresses, labels, tracking, delays, reships) in orders.csv; customer replies; Friday retro that opens a GitHub PR for owner merge",
+      "skills": [
+        "Merch · Purchase order",
+        "Merch · Customer reply",
+        "Merch · Weekly retro"
+      ],
+      "routines": [
+        {
+          "name": "Customer replies",
+          "trigger": "new mail in the company inbox",
+          "enabled": false
+        },
+        {
+          "name": "Weekly retro",
+          "cron": "17 16 * * 5",
+          "when": "Fridays 4:17 PM CT",
+          "enabled": false
+        }
+      ],
+      "needs_owner": [
+        "refunds, discounts, credits",
+        "every customer reply (draft)",
+        "any spend",
+        "merging retro PRs"
+      ],
+      "reports_to": "Dolce & Grokbana"
+    }
   ],
   "rules": {
     "hard_spend_limit_usd": 500,
     "hard_limit_behavior": "Any order, deposit or payment over $500 (single or daily total) is blocked outright: never drafted as a payment, never split. Written up as 'Over $500, needs owner' and stopped.",
     "messages": "draft-only; owner presses send",
     "payments": "Stripe test mode only",
-    "never": ["delete records", "put customer PII in skills or templates", "claim endorsement", "enable a routine without the owner"]
+    "never": [
+      "delete records",
+      "put customer PII in skills or templates",
+      "claim endorsement",
+      "enable a routine without the owner",
+      "message the owner directly from a sub-bot"
+    ],
+    "shared_skill": "Merch · Rules (also copied inline into each bot as a fallback)"
   },
   "worked_example": "bot-team/verticals/clothing-brand/examples/galatiq/"
 }

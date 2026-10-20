@@ -1,0 +1,20 @@
+README.md
+  h_cb88e130246132 49
+bot-team/merch-team-setup/ARCHITECTURE.md
+  h_cb88e130246132 38
+bot-team/merch-team-setup/README.md
+  h_cb88e130246132 13
+bot-team/merch-team-setup/skills/merch-team-setup/SKILL.md
+  h_cb88e130246132 27,51
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "7251542c69886a60747baea6dd5dd998daaf6d2b",
+  "prompts": {},
+  "humans": {
+    "h_cb88e130246132": {
+      "author": "Logan May (Work) <loganwork@Logans-MacBook-Pro.local>"
+    }
+  }
+}

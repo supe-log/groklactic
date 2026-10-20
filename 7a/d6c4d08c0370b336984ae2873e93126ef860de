@@ -1,0 +1,16 @@
+bot-team/merch-chief-of-staff/skills/merch-team-setup/SKILL.md
+  h_cb88e130246132 1-40
+bot-team/merch-chief-of-staff/template.md
+  h_cb88e130246132 1-13
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "7ad6c4d08c0370b336984ae2873e93126ef860de",
+  "prompts": {},
+  "humans": {
+    "h_cb88e130246132": {
+      "author": "Logan May (Work) <loganwork@Logans-MacBook-Pro.local>"
+    }
+  }
+}

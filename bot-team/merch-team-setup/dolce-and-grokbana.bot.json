@@ -7,7 +7,7 @@
     "getting_started_skill": "merch-team-setup",
     "skill_file": "bot-team/merch-team-setup/skills/merch-team-setup/SKILL.md",
     "triggers": ["Build my team", "Set up merch for <site>", "update yourself from GitHub", "turn on <routine>"],
-    "source_of_truth": {"repo": "supe-log/groklactic", "branch": "dolce-and-grokbana", "folder": "bot-team/merch-team-setup/"},
+    "source_of_truth": {"repo": "supe-log/groklactic", "branch": "dolce-grokbana", "folder": "bot-team/merch-team-setup/"},
     "company_inbox": "claims merch-<brand>@mail.grokbot.com at setup; all outgoing mail is a draft",
     "plugins": [{"name": "Adapter", "id": "70141458", "packed": true}, {"name": "Gmail or Outlook", "installed_at_build": true}, {"name": "Google Drive", "installed_at_build": true}, {"name": "Higgsfield", "installed_at_build": true}],
     "routines": [{"name": "Repo sync", "cron": "3 9 * * *", "enabled": false, "does": "Checks for new commits to the repo folder and proposes updates to its own skill; applies only after owner yes"}],

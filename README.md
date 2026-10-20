@@ -1,26 +1,52 @@
-# Groklactic
+# Dolce & Grokbana
 
-Groklactic sets up a whole Grok Bot team for a small business in one click. You fill in a short intake, and you get a team of six bots with their skills, paused routines and founder approval rules. Every outbound message, purchase order, deposit, publish or spend waits for the founder.
+**Install one Grok Bot, give it your company's website, and it builds a 4-bot team that runs your merch end to end. Nothing ships, sends or spends without your OK.**
 
-The two verticals are a **clothing brand** (No Thought: vendor search, RFQs and negotiation, Higgsfield design, launch) and a **small insurance agency**.
+Team 4 entry, Galatiq x SpaceXSI Grok Bot Hackathon, Austin, Oct 19 2026.
 
-## Quickstart (local, about 5 minutes)
+## How it works
+1. Install **Dolce & Grokbana** and say *"Set up merch for galatiq.ai"* (or "Build my team").
+2. It claims the team's own `@mail.grokbot.com` inbox, reads the brand from the site (palette, voice, wordmark, every fact sourced), and saves it to memory.
+3. It creates 4 sub-bots with their skills and paused routines.
+4. Customers and vendors email the team inbox. Replies are drafts the owner approves.
+5. Every Friday the retro turns 👎 feedback into a pull request on this repo. The owner merges, and every install picks it up through **Repo sync**.
 
-1. Run the web app ([eye-of-grok](https://github.com/supe-log/eye-of-grok)): `npm install && npm run dev -- -p 3010`
-2. Open `http://localhost:3010/start`, pick **Clothing brand**, use the slug `no-thought`, and click **Design my Bot team**.
-3. In Grok Bot, install the **Setup Chief of Staff** template (one-click share link; its text is in `bot-team/setup-chief-of-staff/template.md`) and say **"Build my team"**. No template? Tell any Grok Bot: "Clone this repo and follow `bot-team/setup-chief-of-staff/skills/getting-started/SKILL.md`." The skill fetches this repo by itself. It fetches the plan from eye-of-grok and falls back to `bot-team/exports/` if the app can't be reached.
-4. Give the work 👍 or 👎 on the team page, then say **"Run the retro now"** to Ops & Retro, or click **Run retro**. The improvement it proposes waits for your approval.
+```mermaid
+flowchart LR
+  O[Owner] -->|"Set up merch for site"| D[Dolce & Grokbana]
+  D -->|brand discovery| M[(Memory + brand-profile.json)]
+  D --> I[Team inbox @mail.grokbot.com]
+  D --> B[Brand & Design]
+  D --> V[Vendor Scout]
+  D --> N[Outreach & Negotiation]
+  D --> P[Ops & Orders]
+  I --> P
+  I --> N
+  B & V & N & P -->|drafts, spend, refunds| Q{Owner approval}
+  P -->|Friday retro| PR[Pull request on GitHub]
+  PR -->|owner merges| D
+```
 
-## Layout
-- `bot-team/clothing-team.json` and `bot-team/insurance-team.json` are self-contained rosters: the plan, every skill, and the trigger phrases.
-- `bot-team/verticals/` holds the per-vertical packs. `bot-team/exports/` has plans in the app's own format.
-- `bot-team/setup-chief-of-staff/` is the installer bot and its getting-started skill.
-- `bot-team/tools/validate.py` validates a team: `cd bot-team && python3 -m venv .venv && .venv/bin/pip install jsonschema && .venv/bin/python tools/validate.py`
+## The team
+| Bot | Job | Skills | Routines (all start paused) |
+|---|---|---|---|
+| Dolce & Grokbana | Installs and maintains the team | `merch-team-setup` | Repo sync, daily 9:03 AM |
+| Brand & Design | Brand profile, mockups, tech packs, approval queue | Merch · Brand brief, Merch · Mockups | Daily merch brief, weekdays 8:07 AM |
+| Vendor Scout | Compares print shops at 25/50/100 units, never contacts vendors | Merch · Vendor comparison | Vendor refresh, Wed 10:17 AM |
+| Outreach & Negotiation | Drafts quote requests and counteroffers | Merch · Quote request, Merch · Negotiation playbook | Vendor thread check, weekdays 11:12 AM |
+| Ops & Orders | POs, test-mode deposits, order list, late/missed orders, shipping, tracking, reships, customer replies, retro | Merch · Purchase order, Merch · Customer reply, Merch · Weekly retro | Customer replies (on new mail), Weekly retro Fri 4:17 PM |
 
-## Guardrails
-Every bot drafts and nothing sends without the founder. Payments stay in Stripe test mode, Higgsfield spend is capped, and nothing goes over $500 without approval. Every routine starts paused.
+## Rules (in every bot)
+- Every customer and vendor message is a draft the owner approves.
+- **Hard $500 limit:** anything over $500, one order or a day's total, is blocked outright and never split.
+- Spend, refunds, discounts, credits, new vendors, public logo use and image generations go to the owner first.
+- Payments run in Stripe test mode only. No customer personal info in skills. Never claim the brand endorses the merch.
 
-## Team docs
-- [TEAM.md](TEAM.md): who does what tonight, the fresh-bot test, timeline.
-- [SETUP.md](SETUP.md): local folder layout, 5-step demo run, smoke test.
-- [bot-team/demo.md](bot-team/demo.md): the judge click path and pitch.
+## Plugins
+Gmail or Outlook, Google Drive, Higgsfield (mockups), Adapter (optional, id 70141458). The browser is the fallback.
+
+## Collaborate
+Edit `bot-team/merch-team-setup/skills/merch-team-setup/SKILL.md` in a pull request to `dolce-and-grokbana`. Installed bots apply changes only after the owner says yes.
+
+## Worked example
+Galatiq (`bot-team/verticals/clothing-brand/examples/galatiq/`): sourced brand profile, mockups, vendor comparison, quote request, and a purchase order flagged "Over $500, needs owner". All drafts, nothing ordered.

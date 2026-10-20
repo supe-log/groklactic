@@ -46,7 +46,7 @@ flowchart LR
 Gmail or Outlook, Google Drive, Higgsfield (mockups), Adapter (optional, id 70141458). The browser is the fallback.
 
 ## Collaborate
-Edit `bot-team/merch-team-setup/skills/merch-team-setup/SKILL.md` in a pull request to `dolce-and-grokbana`. Installed bots apply changes only after the owner says yes.
+Edit `bot-team/merch-team-setup/skills/merch-team-setup/SKILL.md` in a pull request to `dolce-grokbana`. Installed bots apply changes only after the owner says yes.
 
 ## Worked example
 Galatiq (`bot-team/verticals/clothing-brand/examples/galatiq/`): sourced brand profile, mockups, vendor comparison, quote request, and a purchase order flagged "Over $500, needs owner". All drafts, nothing ordered.

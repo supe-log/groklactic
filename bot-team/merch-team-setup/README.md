@@ -10,4 +10,4 @@ Install one Grok Bot, give it your company's website, and it builds a 4-bot team
 
 **Try it:** install the Dolce & Grokbana template, then type `Set up merch for <your site>`.
 
-**Improve it:** open a pull request against this folder on the `dolce-and-grokbana` branch.
+**Improve it:** open a pull request against this folder on the `dolce-grokbana` branch.

@@ -12,6 +12,8 @@
 
 **Plugins:** Adapter (70141458) is packed. Gmail or Outlook, Drive and Higgsfield are installed during the build.
 
+**What it needs:** before building, the bot checks and tells you plainly what is ready and what is missing. Required: website reading (web fetch, falling back to the browser if the site blocks scraping, or your own 3-line description) and its own company inbox. Recommended: Gmail or Outlook, Google Drive, and Higgsfield for mockups. Optional: GitHub for retro pull requests, Stripe in test mode, and Adapter. Anything missing comes with a connect card or a fallback, and it never asks for keys or passwords.
+
 **Company inbox:** at setup the bot claims its own `@mail.grokbot.com` address for vendors and customers. Every email out of it is still a draft until the owner approves it.
 
 **Hard $500 limit:** anything over $500, whether one order or a day's total, is blocked outright and never split to get under the limit.

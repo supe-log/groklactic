@@ -15,7 +15,7 @@ flowchart TD
   I --> OO
   I --> ON
   BD & ON & OO -->|drafts, refunds, spend| A[Owner approval]
-  OO -->|Friday retro| PR[GitHub PR on this folder] -->|owner merges| G[(supe-log/groklactic<br/>dolce-and-grokbana)]
+  OO -->|Friday retro| PR[GitHub PR on this folder] -->|owner merges| G[(supe-log/groklactic<br/>dolce-grokbana)]
   G -->|Repo sync / update yourself| D
 ```
 

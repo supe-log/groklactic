@@ -1,4 +1,4 @@
-# Merch Team Setup (Grok Bot marketplace template)
+# Dolce & Grokbana (Grok Bot marketplace template)
 
 **Description:** Install one bot and give it your company's website. It builds a team of 4 merch bots that designs, sources, quotes and sells your branded clothing, and nothing ships, sends or spends without your OK.
 

@@ -3,7 +3,7 @@ Pitch: "Add one bot, and it builds your whole merch team. Nothing ships, sends o
 
 | # | Time | On screen (Logan drives) | Say | Rubric |
 |---|---|---|---|---|
-| 1 LIVE | 0:00-0:30 | Open the **Merch Team Setup** template and add it. Type "Build my team" with galatiq.ai. | "One bot from the templates. That's the whole setup." | Clarity, Grok Bot use |
+| 1 LIVE | 0:00-0:30 | Open the **Dolce & Grokbana** template and add it. Type "Build my team" with galatiq.ai. | "One bot from the templates. That's the whole setup." | Clarity, Grok Bot use |
 | 2 LIVE | 0:30-1:10 | It reads the site and saves the brand to memory. Four sub-bots appear: Brand & Design, Vendor Scout, Outreach & Negotiation, and Ops & Orders, each with founder rules and paused routines. | "It read their site and hired its own team." | Works, Grok Bot use (browser, memory, creating bots, routines) |
 | 3 STILL | 1:10-1:40 | `fallback/merch-1.png`, the hoodie and cap in Galatiq's black, white and green. | "Their colors, from their code. Nothing of ours." | Real work, Uniqueness |
 | 4 STILL | 1:40-2:15 | `fallback/galatiq-vendors.png`, then `fallback/galatiq-rfq-over-500.png`. | "Real vendors and prices, a negotiation drafted, and it stops at $500 and asks me." | Real work, Track 3 founder rule |

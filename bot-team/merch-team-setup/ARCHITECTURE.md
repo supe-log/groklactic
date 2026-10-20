@@ -35,4 +35,4 @@ flowchart TD
 
 **Machine-readable files:** `dolce-and-grokbana.bot.json` (the full spec) and `skills/merch-team-setup/SKILL.md` (the setup flow the bot runs).
 
-**Collaborating:** edit `SKILL.md` in a pull request to `dolce-and-grokbana`. Installed bots pick up the change through Repo sync, or when the owner says "update yourself from GitHub", always after the owner says yes.
+**Collaborating:** edit `SKILL.md` in a pull request to `dolce-grokbana`. Installed bots pick up the change through Repo sync, or when the owner says "update yourself from GitHub", always after the owner says yes.
